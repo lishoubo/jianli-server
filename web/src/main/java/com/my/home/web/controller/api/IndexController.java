@@ -1,4 +1,4 @@
-package com.my.home.web.controller;
+package com.my.home.web.controller.api;
 
 import org.springframework.web.bind.annotation.RestController;
 

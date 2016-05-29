@@ -1,4 +1,4 @@
-package com.my.home.web.controller;
+package com.my.home.web.controller.admin;
 
 import com.my.home.common.Result;
 import com.my.home.common.StatusCode;
