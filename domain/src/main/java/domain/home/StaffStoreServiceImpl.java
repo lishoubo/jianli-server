@@ -22,7 +22,7 @@ public class StaffStoreServiceImpl implements StaffStoreService {
         Response response = couchDbService.save(staff);
 
         Result result = Result.result(StatusCode.SUCCESS);
-        result.setData(response.getId());
+        result.setData("id");
         result.setSuccess(true);
         return result;
     }
