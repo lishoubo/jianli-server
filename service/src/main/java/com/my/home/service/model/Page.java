@@ -3,20 +3,20 @@ package com.my.home.service.model;
 import java.util.List;
 
 public class Page<T> {
-	private int currentPage;
+	private int page;
 
 	private int pageSize;
 
-	private int pagetotal;
+	private int pageTotal;
 
 	private List<T> items;
 
-	public int getCurrentPage() {
-		return currentPage;
+	public int getPage() {
+		return page;
 	}
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getPageSize() {
@@ -27,12 +27,12 @@ public class Page<T> {
 		this.pageSize = pageSize;
 	}
 
-	public int getPagetotal() {
-		return pagetotal;
+	public int getPageTotal() {
+		return pageTotal;
 	}
 
-	public void setPagetotal(int pagetotal) {
-		this.pagetotal = pagetotal;
+	public void setPageTotal(int pageTotal) {
+		this.pageTotal = pageTotal;
 	}
 
 	public List<T> getItems() {
