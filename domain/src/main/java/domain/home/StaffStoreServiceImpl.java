@@ -43,10 +43,10 @@ public class StaffStoreServiceImpl implements StaffStoreService {
         staff2.setProfessional("电子商务");
 
         Staff staff3 = new Staff();
-        staff2.setName("张颖");
-        staff2.setGrade("5");
-        staff2.setQualification("10");
-        staff2.setProfessional("测试");
+        staff3.setName("张颖");
+        staff3.setGrade("5");
+        staff3.setQualification("10");
+        staff3.setProfessional("测试");
 
         staffs.add(staff3);
         staffs.add(staff2);
