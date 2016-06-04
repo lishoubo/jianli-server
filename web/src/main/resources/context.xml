@@ -11,6 +11,7 @@
     <import resource="domain.xml"/>
 
     <context:component-scan base-package="com.my.home">
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

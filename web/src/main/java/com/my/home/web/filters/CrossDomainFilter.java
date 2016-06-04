@@ -17,7 +17,6 @@ public class CrossDomainFilter implements Filter {
 	public static String ACMG = "Access-Control-Max-Age";
 	public static String CC = "Cache-Control";
 	public static String ACAC = "Access-Control-Allow-Credentials";
-	public static String CONF_VERSION = "X-ConfVer";
 
 	@Override
 	public void destroy() {
