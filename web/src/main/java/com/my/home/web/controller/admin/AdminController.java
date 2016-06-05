@@ -29,9 +29,9 @@ public class AdminController {
 
     @RequestMapping(value = "/staffs", method = RequestMethod.GET)
     public Result loadStaff(
-            @RequestParam(required = false, defaultValue = "1") int currentPage,
+            @RequestParam(required = false, defaultValue = "1") int page,
             @RequestParam(required = false, defaultValue = "20") int pageSize) {
-        return staffStoreService.queryPages(currentPage, pageSize);
+        return staffStoreService.queryPages(page, pageSize);
     }
 
 }

@@ -31,8 +31,8 @@ public class StaffStoreServiceImpl implements StaffStoreService {
         // TODO 此处要实现couchDB的分页查询
         List<Staff> staffs = new ArrayList<Staff>();
         Staff staff1 = new Staff();
-        staff1.setName("李守波");
-        staff1.setGrade("5");
+        staff1.setName("李守波" + currentPage);
+        staff1.setGrade("" + pageSize);
         staff1.setQualification("10");
         staff1.setProfessional("计算机");
 
@@ -53,9 +53,9 @@ public class StaffStoreServiceImpl implements StaffStoreService {
         staffs.add(staff1);
 
         Page<Staff> page = new Page<Staff>();
-        page.setPage(1);
-        page.setPageSize(5);
-        page.setPageTotal(3);
+        page.setPage(currentPage);
+        page.setPageSize(pageSize);
+        page.setPageTotal(10);
         page.setItems(staffs);
 
         Result result = Result.result(StatusCode.SUCCESS);
