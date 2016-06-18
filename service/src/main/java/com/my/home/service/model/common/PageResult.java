@@ -1,15 +1,20 @@
-package com.my.home.service.model;
+package com.my.home.service.model.common;
 
-import java.util.List;
+import com.my.home.common.Result;
 
-public class Page<T> {
+public class PageResult<T> extends Result<T> {
+	/** default versionId */
+	private static final long serialVersionUID = 5967551753988018107L;
+
 	private int page;
 
 	private int pageSize;
 
 	private int pageTotal;
 
-	private List<T> items;
+	public PageResult(T data) {
+		super(data);
+	}
 
 	public int getPage() {
 		return page;
@@ -33,14 +38,6 @@ public class Page<T> {
 
 	public void setPageTotal(int pageTotal) {
 		this.pageTotal = pageTotal;
-	}
-
-	public List<T> getItems() {
-		return items;
-	}
-
-	public void setItems(List<T> items) {
-		this.items = items;
 	}
 
 }

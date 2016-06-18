@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by lishoubo on 16/5/18.
  */
-public class Result<T> implements Serializable {
+public class Result<T> extends ToString implements Serializable {
 	/**
 	 * 
 	 */
@@ -15,17 +15,31 @@ public class Result<T> implements Serializable {
 	private String message;
 	private T data;
 
-	public static <T> Result<T> result(StatusCode statusCode) {
-		Result<T> result = new Result<>();
-		result.setCode(statusCode.getCode());
-		result.setMessage(statusCode.getViewMesage());
-		return result;
+	public Result() {
+		super();
 	}
 
-	public static <T> Result<T> result(T data) {
-		Result<T> result = result(StatusCode.SUCCESS);
+	public Result(StatusCode statusCode) {
+		Result<T> result = new Result<T>();
+		result.setCode(statusCode.getCode());
+		result.setMessage(statusCode.getViewMesage());
+		if (statusCode == StatusCode.SUCCESS) {
+			result.setSuccess(true);
+		} else {
+			result.setSuccess(false);
+		}
+	}
+
+	public Result(T data) {
+		Result<T> result = new Result<T>(StatusCode.SUCCESS);
 		result.setData(data);
-		return result;
+	}
+
+	public Result(BizException e) {
+		Result<T> result = new Result<>();
+		result.setSuccess(false);
+		result.setMessage(e.getViewErrorMessage());
+
 	}
 
 	public String getCode() {

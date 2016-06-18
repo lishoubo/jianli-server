@@ -4,7 +4,8 @@ package com.my.home.common;
  * Created by lishoubo on 16/5/18.
  */
 public enum StatusCode {
-	SUCCESS("0", "SUCCESS", "处理成功"), SYSTEM_ERROR("1", "SYSTEM ERROR", "网路异常");
+	SUCCESS("0", "SUCCESS", "处理成功"), SYSTEM_ERROR("1", "SYSTEM ERROR", "网路异常"), NULL_PARAM(
+			"00100", "参数为空", "入参不能为空");
 
 	private String code;
 	private String message;
