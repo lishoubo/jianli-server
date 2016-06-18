@@ -15,9 +15,9 @@ import com.jl.platform.common.StatusCode;
 /**
  * Created by lishoubo on 16/5/21.
  */
-public class ExceptionHandler implements HandlerExceptionResolver {
+public class JLExceptionHandler implements HandlerExceptionResolver {
 	private static Logger logger = LoggerFactory
-			.getLogger(ExceptionHandler.class);
+			.getLogger(JLExceptionHandler.class);
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request,

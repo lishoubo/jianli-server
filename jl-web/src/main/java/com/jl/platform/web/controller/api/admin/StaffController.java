@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * Created by lishoubo on 16/5/21.
@@ -22,7 +23,7 @@ public class StaffController extends BaseController {
     private StaffStoreService staffStoreService;
 
     @RequestMapping(value = "/staffs", method = RequestMethod.POST)
-    public Result<String> addStaff(Staff staff) {
+    public Result<String> addStaff(@Valid Staff staff) {
         Result<String> result = staffStoreService.save(staff);
         return result;
     }

@@ -5,6 +5,7 @@ package com.jl.platform.common;
  */
 public enum StatusCode {
     SUCCESS(200, "SUCCESS", "处理成功"),
+    CLIENT_INVALID_REQUEST(300, "CLIENT INVALID REQUEST", "不合法的客户端请求"),
     SYSTEM_ERROR(500, "SYSTEM ERROR", "服务端出错"),
     SERVER_SAVE_FAIL(501, "SERVER SAVE FAIL", "服务端存储失败"),
 
