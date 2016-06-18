@@ -5,7 +5,7 @@ import com.jl.platform.common.Result;
 import com.jl.platform.common.PageQuery;
 import com.jl.platform.service.model.Staff;
 
-public interface StaffStoreService {
+public interface StaffService {
 	/**
 	 * 创建一个新的员工
 	 * 

@@ -4,15 +4,15 @@ import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
 import com.jl.platform.domain.couchdb.StaffCouchDBStore;
-import com.jl.platform.service.StaffStoreService;
+import com.jl.platform.service.StaffService;
 import com.jl.platform.service.model.Staff;
 import org.lightcouch.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service("staffStoreService")
-public class StaffStoreServiceImpl implements StaffStoreService {
+@Service("staffService")
+public class StaffServiceImpl implements StaffService {
     @Resource
     private StaffCouchDBStore staffCouchDBStore;
 
