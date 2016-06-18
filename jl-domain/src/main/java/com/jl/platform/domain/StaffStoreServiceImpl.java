@@ -28,7 +28,7 @@ public class StaffStoreServiceImpl implements StaffStoreService {
 
     @Override
     public Result<Pagination<Staff>> query(PageQuery pageQuery) {
-        List<Staff> staffs = couchDBStore.pageQuery("staff/queryPage", pageQuery, Staff.class);
+        List<Staff> staffs = couchDBStore.pageQuery(pageQuery);
         return Result.pagination(staffs, pageQuery, 10);
     }
 }

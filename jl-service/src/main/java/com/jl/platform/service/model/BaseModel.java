@@ -7,8 +7,17 @@ import java.util.Date;
  * Created by lishoubo on 16/6/18.
  */
 public abstract class BaseModel implements Serializable {
+    private String type;
     protected Date updateTime;
     protected Date createTime;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Date getUpdateTime() {
         return updateTime;
