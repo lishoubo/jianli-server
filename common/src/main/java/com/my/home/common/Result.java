@@ -1,33 +1,38 @@
 package com.my.home.common;
 
+import java.io.Serializable;
+
 /**
  * Created by lishoubo on 16/5/18.
  */
-public class Result<T> {
+public class Result<T> implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean success;
-	private int code;
+	private String code;
 	private String message;
 	private T data;
 
-	public static <T> Result result(StatusCode statusCode) {
+	public static <T> Result<T> result(StatusCode statusCode) {
 		Result<T> result = new Result<>();
 		result.setCode(statusCode.getCode());
-		result.setMessage(statusCode.getMessage());
+		result.setMessage(statusCode.getViewMesage());
 		return result;
 	}
 
-	public static <T> Result result(T data) {
-		Result<T> result = new Result<>();
-		result.setCode(0);
+	public static <T> Result<T> result(T data) {
+		Result<T> result = result(StatusCode.SUCCESS);
 		result.setData(data);
 		return result;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
