@@ -3,23 +3,22 @@ package com.jl.platform.domain;
 import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.domain.couchdb.CouchDBStore;
+import com.jl.platform.domain.couchdb.StaffCouchDBStore;
 import com.jl.platform.service.StaffStoreService;
 import com.jl.platform.service.model.Staff;
 import org.lightcouch.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service("staffStoreService")
 public class StaffStoreServiceImpl implements StaffStoreService {
     @Resource
-    private CouchDBStore couchDBStore;
+    private StaffCouchDBStore staffCouchDBStore;
 
     @Override
     public Result<String> save(Staff staff) {
-        Result<Response> responseResult = couchDBStore.save(staff);
+        Result<Response> responseResult = staffCouchDBStore.save(staff);
         if (!responseResult.isSuccess()) {
             return Result.create(responseResult.getCode(), responseResult.getMessage());
         }
@@ -28,7 +27,6 @@ public class StaffStoreServiceImpl implements StaffStoreService {
 
     @Override
     public Result<Pagination<Staff>> query(PageQuery pageQuery) {
-        List<Staff> staffs = couchDBStore.pageQuery(pageQuery);
-        return Result.pagination(staffs, pageQuery, 10);
+        return staffCouchDBStore.list(pageQuery);
     }
 }
