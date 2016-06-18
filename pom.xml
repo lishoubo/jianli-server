@@ -6,10 +6,10 @@
     <artifactId>jianli-server</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>common</module>
-        <module>service</module>
-        <module>domain</module>
-        <module>web</module>
+        <module>jl-common</module>
+        <module>jl-service</module>
+        <module>jl-domain</module>
+        <module>jl-web</module>
     </modules>
     <packaging>pom</packaging>
 

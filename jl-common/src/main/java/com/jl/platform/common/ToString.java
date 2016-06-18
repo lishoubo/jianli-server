@@ -1,0 +1,16 @@
+/**
+ * guanyuhuhu 2016年6月18日
+ */
+package com.jl.platform.common;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+/**
+ * @author zhanglu
+ */
+public class ToString {
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
+}

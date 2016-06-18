@@ -1,0 +1,17 @@
+<assembly>
+    <id>jianli-server</id>
+    <baseDirectory>jianli-server.war</baseDirectory>
+    <formats>
+        <format>tgz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>target/jianli-server.war</directory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>
