@@ -7,9 +7,11 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <context:component-scan base-package="domain.home"/>
-    
-    <bean id="couchDbClient" class="org.lightcouch.CouchDbClient" destroy-method="shutdown"/>
+    <context:component-scan base-package="com.jl.platform.domain"/>
+
+    <bean id="couchDbClient" class="org.lightcouch.CouchDbClient" destroy-method="shutdown">
+        <constructor-arg name="configFileName" value=""/>
+    </bean>
 
 
 </beans>

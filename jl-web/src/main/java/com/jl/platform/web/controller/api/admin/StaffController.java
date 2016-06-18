@@ -2,7 +2,7 @@ package com.jl.platform.web.controller.api.admin;
 
 import com.jl.platform.common.Result;
 import com.jl.platform.service.StaffStoreService;
-import com.jl.platform.service.form.PageQuery;
+import com.jl.platform.common.PageQuery;
 import com.jl.platform.service.model.Staff;
 import com.jl.platform.web.controller.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,7 @@
 /**
  * guanyuhuhu 2016年6月18日
  */
-package com.jl.platform.service.form;
+package com.jl.platform.common;
 
 /**
  * @author zhanglu

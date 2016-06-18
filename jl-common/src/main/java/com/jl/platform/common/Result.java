@@ -1,42 +1,52 @@
 package com.jl.platform.common;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by lishoubo on 16/5/18.
  */
 public class Result<T> implements Serializable {
     private static final long serialVersionUID = 1L;
-    private boolean success;
-    private String code;
+    private int code;
     private String message;
     private T data;
 
-    public Result() {
-        super();
+    public static <T> Result create(T data) {
+        Result<T> tResult = new Result<>();
+        tResult.setCode(StatusCode.SUCCESS.getCode());
+        tResult.setData(data);
+        return tResult;
     }
 
-    public Result(StatusCode statusCode) {
+    public static <T> Result create(StatusCode statusCode) {
         Result<T> result = new Result<T>();
         result.setCode(statusCode.getCode());
         result.setMessage(statusCode.getDescription());
-        if (statusCode == StatusCode.SUCCESS) {
-            result.setSuccess(true);
-        } else {
-            result.setSuccess(false);
-        }
+        return result;
     }
 
-    public Result(T data) {
-        Result<T> result = new Result<T>(StatusCode.SUCCESS);
-        result.setData(data);
+    public static <T> Result create(int code, String message) {
+        Result<T> result = new Result<T>();
+        result.setCode(code);
+        result.setMessage(message);
+        return result;
     }
 
-    public String getCode() {
+    public static <T> Result<Pagination<T>> pagination(List<T> items, PageQuery pageQuery, int totalPage) {
+        Pagination<T> pagination = new Pagination<T>();
+        pagination.setItems(items);
+        pagination.setPage(pageQuery.getPage());
+        pagination.setPageSize(pageQuery.getPageSize());
+        pagination.setPageTotal(totalPage);
+        return Result.create(pagination);
+    }
+
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -56,12 +66,7 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
     public boolean isSuccess() {
-        return success;
+        return code == StatusCode.SUCCESS.getCode();
     }
-
 }

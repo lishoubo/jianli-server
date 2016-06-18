@@ -30,7 +30,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 	private void responseResult(HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-			Result result = new Result(StatusCode.SYSTEM_ERROR);
+			Result result = Result.create(StatusCode.SYSTEM_ERROR);
 			response.setContentType("application/json;charset=UTF-8");
 			response.getWriter().write(JSON.toJSONString(result));
 		} catch (Throwable e) {

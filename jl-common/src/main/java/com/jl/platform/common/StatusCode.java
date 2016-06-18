@@ -4,20 +4,23 @@ package com.jl.platform.common;
  * Created by lishoubo on 16/5/18.
  */
 public enum StatusCode {
-    SUCCESS("200", "SUCCESS", "处理成功"),
-    SYSTEM_ERROR("500", "SYSTEM ERROR", "服务端出错");
+    SUCCESS(200, "SUCCESS", "处理成功"),
+    SYSTEM_ERROR(500, "SYSTEM ERROR", "服务端出错"),
+    SERVER_SAVE_FAIL(501, "SERVER SAVE FAIL", "服务端存储失败"),
 
-    private String code;
+    //
+    ;
+    private int code;
     private String message;
     private String description;
 
-    StatusCode(String code, String message, String viewMessage) {
+    StatusCode(int code, String message, String viewMessage) {
         this.code = code;
         this.message = message;
         this.description = viewMessage;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
@@ -29,7 +32,7 @@ public enum StatusCode {
         return description;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

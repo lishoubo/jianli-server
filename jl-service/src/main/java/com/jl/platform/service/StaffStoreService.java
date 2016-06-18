@@ -1,11 +1,9 @@
 package com.jl.platform.service;
 
-import java.util.List;
-
-import com.jl.platform.service.model.Staff;
-import com.jl.platform.common.PagedResult;
+import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.service.form.PageQuery;
+import com.jl.platform.common.PageQuery;
+import com.jl.platform.service.model.Staff;
 
 public interface StaffStoreService {
 	/**
@@ -22,5 +20,5 @@ public interface StaffStoreService {
 	 * @param pageQuery
 	 * @return Result
 	 */
-	PagedResult<List<Staff>> query(PageQuery pageQuery);
+	Result<Pagination<Staff>> query(PageQuery pageQuery);
 }
