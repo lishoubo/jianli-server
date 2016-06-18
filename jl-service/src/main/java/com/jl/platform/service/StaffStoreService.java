@@ -3,9 +3,9 @@ package com.jl.platform.service;
 import java.util.List;
 
 import com.jl.platform.service.model.Staff;
-import com.jl.platform.service.model.common.PageResult;
+import com.jl.platform.common.PagedResult;
 import com.jl.platform.common.Result;
-import com.jl.platform.service.model.common.PageQueryRequest;
+import com.jl.platform.service.form.PageQuery;
 
 public interface StaffStoreService {
 	/**
@@ -14,13 +14,13 @@ public interface StaffStoreService {
 	 * @param staff
 	 * @return Result<String>
 	 */
-	Result<String> saveStaff(Staff staff);
+	Result<String> save(Staff staff);
 
 	/**
 	 * 分页查询员工信息
 	 * 
-	 * @param pageReq
+	 * @param pageQuery
 	 * @return Result
 	 */
-	PageResult<List<Staff>> queryPages(PageQueryRequest pageReq);
+	PagedResult<List<Staff>> query(PageQuery pageQuery);
 }

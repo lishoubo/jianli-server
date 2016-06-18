@@ -1,9 +1,6 @@
-package com.jl.platform.service.model.common;
+package com.jl.platform.common;
 
-import com.jl.platform.common.Result;
-
-public class PageResult<T> extends Result<T> {
-	/** default versionId */
+public class PagedResult<T> extends Result<T> {
 	private static final long serialVersionUID = 5967551753988018107L;
 
 	private int page;
@@ -12,7 +9,7 @@ public class PageResult<T> extends Result<T> {
 
 	private int pageTotal;
 
-	public PageResult(T data) {
+	public PagedResult(T data) {
 		super(data);
 	}
 
