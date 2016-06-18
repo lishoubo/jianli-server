@@ -28,7 +28,7 @@ public class StaffController extends BaseController {
     }
 
     @RequestMapping(value = "/staffs", method = RequestMethod.GET)
-    public Result list(@RequestParam("pageReq") final PageQuery pageReq) {
+    public Result list(PageQuery pageReq) {
         return staffStoreService.query(pageReq);
     }
 

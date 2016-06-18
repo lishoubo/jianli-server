@@ -19,15 +19,15 @@ public class Result<T> implements Serializable {
         return tResult;
     }
 
-    public static <T> Result create(StatusCode statusCode) {
-        Result<T> result = new Result<T>();
+    public static Result create(StatusCode statusCode) {
+        Result result = new Result();
         result.setCode(statusCode.getCode());
         result.setMessage(statusCode.getDescription());
         return result;
     }
 
-    public static <T> Result create(int code, String message) {
-        Result<T> result = new Result<T>();
+    public static Result create(int code, String message) {
+        Result result = new Result();
         result.setCode(code);
         result.setMessage(message);
         return result;

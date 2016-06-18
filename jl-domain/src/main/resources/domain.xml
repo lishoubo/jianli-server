@@ -10,7 +10,7 @@
     <context:component-scan base-package="com.jl.platform.domain"/>
 
     <bean id="couchDbClient" class="org.lightcouch.CouchDbClient" destroy-method="shutdown">
-        <constructor-arg name="configFileName" value=""/>
+        <constructor-arg name="configFileName" value="couchdb.properties"/>
     </bean>
 
 

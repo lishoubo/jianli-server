@@ -1,5 +1,6 @@
 package com.jl.platform.web.controller.api.admin;
 
+import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Result;
 import com.jl.platform.service.BaikeService;
 import com.jl.platform.service.model.Baike;
@@ -23,6 +24,11 @@ public class BaikeController extends BaseController {
     public Result<String> add(Baike baike) {
         Result<String> result = baikeService.save(baike);
         return result;
+    }
+
+    @RequestMapping(value = "/baike", method = RequestMethod.GET)
+    public Result list(PageQuery pageReq) {
+        return baikeService.query(pageReq);
     }
 
 }

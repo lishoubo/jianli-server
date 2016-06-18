@@ -8,7 +8,6 @@ package com.jl.platform.common;
  */
 public class PageQuery {
     private int pageSize;
-
     private int page;
 
     public int getPageSize() {
