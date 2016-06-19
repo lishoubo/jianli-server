@@ -4,7 +4,6 @@
 target
 *.log*
 classes
-*db*
 *.class
 .project
 .classpath
