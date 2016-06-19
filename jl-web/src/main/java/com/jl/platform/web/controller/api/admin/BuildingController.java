@@ -1,6 +1,3 @@
-/**
- * guanyuhuhu 2016年6月19日
- */
 package com.jl.platform.web.controller.api.admin;
 
 import java.util.List;
@@ -21,12 +18,12 @@ import com.jl.platform.web.controller.BaseController;
  * @author zhanglu
  */
 @RestController
-@RequestMapping("/api/admin/building")
+@RequestMapping("/api/admin")
 public class BuildingController extends BaseController {
 	@Resource
 	private BuildingService buildingService;
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/building", method = RequestMethod.POST)
 	public Result<String> add(@Valid Building building) {
 		Result<String> result = buildingService.save(building);
 		return result;

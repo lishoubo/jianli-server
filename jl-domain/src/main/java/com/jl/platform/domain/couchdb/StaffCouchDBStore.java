@@ -14,15 +14,15 @@ import com.jl.platform.service.model.Staff;
  */
 @Service
 public class StaffCouchDBStore extends CouchDBStore<Staff> {
-	private static final String VIEW_ID_LIST = "staff/list";
+    private static final String VIEW_ID_LIST = "staff/list";
 
-	public Result<Pagination<Staff>> pageQuery(PageQuery pageQuery) {
-		return pageQuery0(VIEW_ID_LIST, pageQuery, Staff.class, true);
-	}
+    public Result<Pagination<Staff>> pageQuery(PageQuery pageQuery) {
+        return pageQuery0(VIEW_ID_LIST, pageQuery, Staff.class, true);
+    }
 
-	public Staff find(String name) {
-		List<Staff> staffs = listQuery0(VIEW_ID_LIST, Staff.class, 1, name);
-		return staffs == null ? null : staffs.get(0);
-	}
+    public Staff find(String name) {
+        List<Staff> staffs = listQuery0(VIEW_ID_LIST, Staff.class, 1, name);
+        return staffs == null || staffs.isEmpty() ? null : staffs.get(0);
+    }
 
 }

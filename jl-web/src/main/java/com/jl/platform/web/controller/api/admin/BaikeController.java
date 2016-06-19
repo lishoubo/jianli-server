@@ -15,18 +15,18 @@ import javax.annotation.Resource;
  * Created by lishoubo on 16/6/18.
  */
 @RestController
-@RequestMapping("/api/admin/baike")
+@RequestMapping("/api/admin")
 public class BaikeController extends BaseController {
     @Resource
     private BaikeService baikeService;
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/baike", method = RequestMethod.POST)
     public Result<String> add(Baike baike) {
         Result<String> result = baikeService.save(baike);
         return result;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/baike", method = RequestMethod.GET)
     public Result list(PageQuery pageReq) {
         return baikeService.query(pageReq);
     }

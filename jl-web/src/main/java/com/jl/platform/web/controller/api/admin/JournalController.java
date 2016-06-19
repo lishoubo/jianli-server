@@ -18,18 +18,18 @@ import javax.validation.Valid;
  * Created by lishoubo on 16/6/18.
  */
 @RestController
-@RequestMapping("/api/admin/journal")
+@RequestMapping("/api/admin")
 public class JournalController extends BaseController {
     @Resource
     private JournalService journalService;
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/journal", method = RequestMethod.POST)
     public Result<String> add(@Valid JournalForm journalForm) {
         Result<String> result = journalService.save(journalForm);
         return result;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/journal", method = RequestMethod.GET)
     public Result list(PageQuery pageReq) {
         return journalService.query(pageReq);
     }
