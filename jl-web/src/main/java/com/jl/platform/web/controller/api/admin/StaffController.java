@@ -34,7 +34,7 @@ public class StaffController extends BaseController {
 		return staffService.query(pageReq);
 	}
 
-	@RequestMapping(value = "/staffs", method = RequestMethod.GET)
+	@RequestMapping(value = "/staffs/queryByName", method = RequestMethod.GET)
 	public Result queryStaffByName(@RequestParam("name") String name) {
 		return staffService.queryByName(name);
 
