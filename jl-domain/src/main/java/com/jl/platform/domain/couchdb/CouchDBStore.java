@@ -80,4 +80,21 @@ public abstract class CouchDBStore<T extends BaseModel> {
 		}
 		return Collections.EMPTY_LIST;
 	}
+
+	public Result<Response> update(T model) {
+		try {
+			polishModel(model);
+			Response response = couchDbClient.update(model);
+			if (response.getError() != null) {
+				logger.error("[couchdb][update] response not success.{}",
+						JSON.toJSONString(response));
+				return Result.create(StatusCode.SERVER_UPDATE_FAIL);
+			}
+			return Result.create(response);
+		} catch (Exception e) {
+			logger.error("[couchdb][update] exception.{}",
+					JSON.toJSONString(model), e);
+		}
+		return Result.create(StatusCode.SYSTEM_ERROR);
+	}
 }

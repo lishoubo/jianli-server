@@ -2,6 +2,7 @@ package com.jl.platform.domain;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.lightcouch.Response;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +29,11 @@ public class BuildingServiceImpl implements BuildingService {
 
 	@Override
 	public Result<String> save(Building building) {
-		Staff staff = staffCouchDBStore.find(building.getStaffName());
-		if (staff == null) {
-			return Result.create(StatusCode.NOT_FOUND_STAFF);
+		if (StringUtils.isNoneBlank(building.getStaffName())) {
+			Staff staff = staffCouchDBStore.find(building.getStaffName());
+			if (staff == null) {
+				return Result.create(StatusCode.NOT_FOUND_STAFF);
+			}
 		}
 
 		Result<Response> responseResult = buildingCouchDBStore.save(building);
@@ -40,6 +43,7 @@ public class BuildingServiceImpl implements BuildingService {
 
 	@Override
 	public Result<Pagination<Building>> query(PageQuery pageQuery) {
+
 		return buildingCouchDBStore.queryPage(pageQuery);
 	}
 
@@ -52,5 +56,17 @@ public class BuildingServiceImpl implements BuildingService {
 		Building building = buildingCouchDBStore.queryById(id);
 
 		return Result.create(building);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.jl.platform.service.BuildingService#update(com.jl.platform.service
+	 * .model.Building)
+	 */
+	@Override
+	public Result<String> update(Building building) {
+		Result<Response> responseResult = buildingCouchDBStore.update(building);
+		return Result.create(responseResult.getData().getId());
 	}
 }

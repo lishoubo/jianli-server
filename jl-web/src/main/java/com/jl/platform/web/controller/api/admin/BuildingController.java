@@ -39,7 +39,10 @@ public class BuildingController extends BaseController {
 	@RequestMapping(value = "/building/queryById", method = RequestMethod.GET)
 	public Result<Building> queryById(@RequestParam("id") String id) {
 		return buildingService.queryById(id);
-
 	}
 
+	@RequestMapping(value = "/building/update", method = RequestMethod.POST)
+	public Result<String> update(@Valid Building building) {
+		return buildingService.update(building);
+	}
 }

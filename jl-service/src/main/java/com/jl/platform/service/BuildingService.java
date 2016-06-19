@@ -16,4 +16,10 @@ public interface BuildingService {
 	 * @return Result<Building>
 	 */
 	Result<Building> queryById(String id);
+
+	/**
+	 * @param building
+	 * @return Result<String>
+	 */
+	Result<String> update(Building building);
 }
