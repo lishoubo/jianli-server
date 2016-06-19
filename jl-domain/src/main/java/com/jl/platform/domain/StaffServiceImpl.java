@@ -42,4 +42,15 @@ public class StaffServiceImpl implements StaffService {
 
 		return Result.create(staff);
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.jl.platform.service.StaffService#queryById(java.lang.String)
+	 */
+	@Override
+	public Result queryById(String id) {
+		Staff staff = staffCouchDBStore.queryById(id);
+
+		return Result.create(staff);
+	}
 }

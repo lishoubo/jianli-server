@@ -27,4 +27,10 @@ public interface StaffService {
 	 * @return Result
 	 */
 	Result queryByName(String name);
+
+	/**
+	 * @param id
+	 * @return Result
+	 */
+	Result queryById(String id);
 }

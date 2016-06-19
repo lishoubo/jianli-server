@@ -5,6 +5,10 @@
     "list": {
       /*light couch不好用,暂时看来,page查询key和value都固定死了,只能是string*/
       "map": "function(doc) { if(doc.type == 'staff') { emit(doc.name, null); }  }"
+    },
+    "queryById": {
+      /*light couch不好用,暂时看来,page查询key和value都固定死了,只能是string*/
+      "map": "function(doc) { if(doc.type == 'staff') { emit(doc._id, null); }  }"
     }
   }
 }

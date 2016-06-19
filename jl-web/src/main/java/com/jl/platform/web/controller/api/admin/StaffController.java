@@ -40,4 +40,10 @@ public class StaffController extends BaseController {
 
 	}
 
+	@RequestMapping(value = "/staffs/queryById", method = RequestMethod.GET)
+	public Result queryStaffById(@RequestParam("id") String id) {
+		return staffService.queryById(id);
+
+	}
+
 }
