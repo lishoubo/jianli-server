@@ -8,7 +8,6 @@ import com.jl.platform.common.Procedure;
  * Created by lishoubo on 16/6/19. 项目工程
  */
 public class Building extends BaseModel {
-	@NotEmpty(message = "请录入监理人员")
 	private String staffName;
 	@NotEmpty(message = "请录入项目名称")
 	private String name; // 项目名称
