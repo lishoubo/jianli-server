@@ -14,11 +14,12 @@ import com.jl.platform.common.Result;
 import com.jl.platform.service.BuildingService;
 import com.jl.platform.service.model.Building;
 import com.jl.platform.web.controller.BaseController;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author zhanglu
  */
-@Controller
+@RestController
 @RequestMapping("/api/admin/building")
 public class BuildingController extends BaseController {
 	@Resource
