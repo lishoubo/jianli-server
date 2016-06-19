@@ -12,7 +12,6 @@ import com.jl.platform.common.StatusCode;
 import com.jl.platform.domain.couchdb.BuildingCouchDBStore;
 import com.jl.platform.domain.couchdb.StaffCouchDBStore;
 import com.jl.platform.service.BuildingService;
-import com.jl.platform.service.model.Baike;
 import com.jl.platform.service.model.Building;
 import com.jl.platform.service.model.Staff;
 
@@ -40,7 +39,7 @@ public class BuildingServiceImpl implements BuildingService {
 	}
 
 	@Override
-	public Result<Pagination<Baike>> query(PageQuery pageQuery) {
-		return null;
+	public Result<Pagination<Building>> query(PageQuery pageQuery) {
+		return buildingCouchDBStore.queryPage(pageQuery);
 	}
 }

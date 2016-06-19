@@ -1,7 +1,5 @@
 package com.jl.platform.web.controller.api.admin;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -9,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jl.platform.common.PageQuery;
+import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
 import com.jl.platform.service.BuildingService;
 import com.jl.platform.service.model.Building;
@@ -29,9 +29,9 @@ public class BuildingController extends BaseController {
 		return result;
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public Result<List<Building>> listPage() {
-		return null;
+	@RequestMapping(value = "/building", method = RequestMethod.GET)
+	public Result<Pagination<Building>> listPage(PageQuery pageQuery) {
+		return buildingService.query(pageQuery);
 
 	}
 
