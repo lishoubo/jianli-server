@@ -3,9 +3,9 @@
     <property name="pattern" value="%d %p [%t] %c{20} %msg%n"/>
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.root}/miss-server.log</file>
+        <file>${log.root}/jl-server.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.root}/miss-server.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <fileNamePattern>${log.root}/jl-server.log.%d{yyyy-MM-dd}</fileNamePattern>
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <encoder>
