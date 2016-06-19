@@ -1,8 +1,8 @@
 package com.jl.platform.service;
 
+import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.common.PageQuery;
 import com.jl.platform.service.model.Staff;
 
 public interface StaffService {
@@ -21,4 +21,10 @@ public interface StaffService {
 	 * @return Result
 	 */
 	Result<Pagination<Staff>> query(PageQuery pageQuery);
+
+	/**
+	 * @param name
+	 * @return Result
+	 */
+	Result queryByName(String name);
 }
