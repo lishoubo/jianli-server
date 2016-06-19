@@ -44,7 +44,8 @@ public class BuildingServiceImpl implements BuildingService {
 	@Override
 	public Result<Pagination<Building>> query(PageQuery pageQuery) {
 
-		return buildingCouchDBStore.queryPage(pageQuery);
+		Result<Pagination<Building>> paginationResult = buildingCouchDBStore.queryPage(pageQuery);
+		return paginationResult;
 	}
 
 	/*
