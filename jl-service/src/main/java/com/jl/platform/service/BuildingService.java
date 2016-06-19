@@ -22,4 +22,11 @@ public interface BuildingService {
 	 * @return Result<String>
 	 */
 	Result<String> update(Building building);
+
+	/**
+	 * @param id
+	 * @param rev
+	 * @return Result<String>
+	 */
+	Result<String> delete(String id, String rev);
 }

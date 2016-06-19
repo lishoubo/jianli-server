@@ -69,4 +69,15 @@ public class BuildingServiceImpl implements BuildingService {
 		Result<Response> responseResult = buildingCouchDBStore.update(building);
 		return Result.create(responseResult.getData().getId());
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.jl.platform.service.BuildingService#delete(java.lang.String,
+	 * java.lang.String)
+	 */
+	@Override
+	public Result<String> delete(String id, String rev) {
+		Result<Response> responseResult = buildingCouchDBStore.delete(id, rev);
+		return Result.create(responseResult.getData().getId());
+	}
 }

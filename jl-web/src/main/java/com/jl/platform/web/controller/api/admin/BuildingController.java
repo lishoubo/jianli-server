@@ -45,4 +45,10 @@ public class BuildingController extends BaseController {
 	public Result<String> update(@Valid Building building) {
 		return buildingService.update(building);
 	}
+
+	@RequestMapping(value = "/building/delete", method = RequestMethod.POST)
+	public Result<String> delete(@RequestParam("id") String id,
+			@RequestParam("rev") String rev) {
+		return buildingService.delete(id, rev);
+	}
 }

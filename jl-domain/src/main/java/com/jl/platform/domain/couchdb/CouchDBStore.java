@@ -97,4 +97,20 @@ public abstract class CouchDBStore<T extends BaseModel> {
 		}
 		return Result.create(StatusCode.SYSTEM_ERROR);
 	}
+
+	public Result<Response> delete(String id, String rev) {
+		try {
+			Response response = couchDbClient.remove(id, rev);
+			if (response.getError() != null) {
+				logger.error("[couchdb][delete] response not success.{}",
+						JSON.toJSONString(response));
+				return Result.create(StatusCode.SERVER_DELETE_FAIL);
+			}
+			return Result.create(response);
+		} catch (Exception e) {
+			logger.error("[couchdb][delete] exception.{}", "id:", id, "rev:",
+					rev, e);
+		}
+		return Result.create(StatusCode.SYSTEM_ERROR);
+	}
 }

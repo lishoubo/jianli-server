@@ -44,4 +44,5 @@ public class BuildingCouchDBStore extends CouchDBStore<Building> {
 				Building.class, 1, id);
 		return buildings == null ? null : buildings.get(0);
 	}
+
 }

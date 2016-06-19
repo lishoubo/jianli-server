@@ -10,7 +10,8 @@ public enum StatusCode {
 			"NOT FOUND STAFF", "没有找到工程师"), NOT_FOUND_BUILDING(402,
 			"NOT FOUND BUILDING", "没有找到项目"), SYSTEM_ERROR(500, "SYSTEM ERROR",
 			"服务端出错"), SERVER_SAVE_FAIL(501, "SERVER SAVE FAIL", "服务端存储失败"), SERVER_UPDATE_FAIL(
-			501, "SERVER UPDATE FAIL", "服务端更新失败"),
+			501, "SERVER UPDATE FAIL", "服务端更新失败"), SERVER_DELETE_FAIL(501,
+			"SERVER DELETE FAIL", "服务端更新失败"),
 
 	//
 	;
