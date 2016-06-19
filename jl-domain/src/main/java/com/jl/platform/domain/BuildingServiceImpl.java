@@ -42,4 +42,15 @@ public class BuildingServiceImpl implements BuildingService {
 	public Result<Pagination<Building>> query(PageQuery pageQuery) {
 		return buildingCouchDBStore.queryPage(pageQuery);
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.jl.platform.service.BuildingService#queryById(java.lang.String)
+	 */
+	@Override
+	public Result<Building> queryById(String id) {
+		Building building = buildingCouchDBStore.queryById(id);
+
+		return Result.create(building);
+	}
 }

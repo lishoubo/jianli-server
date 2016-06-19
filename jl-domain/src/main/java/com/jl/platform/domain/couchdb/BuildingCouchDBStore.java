@@ -15,6 +15,7 @@ import com.jl.platform.service.model.Building;
 @Service
 public class BuildingCouchDBStore extends CouchDBStore<Building> {
 	private static final String VIEW_ID_LIST = "building/list";
+	private static final String VIEW_ID_QUERYBYID = "building/queryById";
 
 	public Result<Pagination<Building>> list(PageQuery pageQuery) {
 		return pageQuery0(VIEW_ID_LIST, pageQuery, Building.class, true);
@@ -32,5 +33,15 @@ public class BuildingCouchDBStore extends CouchDBStore<Building> {
 	 */
 	public Result<Pagination<Building>> queryPage(PageQuery pageQuery) {
 		return pageQuery0(VIEW_ID_LIST, pageQuery, Building.class, true);
+	}
+
+	/**
+	 * @param id
+	 * @return Result<Building>
+	 */
+	public Building queryById(String id) {
+		List<Building> buildings = listQuery0(VIEW_ID_QUERYBYID,
+				Building.class, 1, id);
+		return buildings == null ? null : buildings.get(0);
 	}
 }

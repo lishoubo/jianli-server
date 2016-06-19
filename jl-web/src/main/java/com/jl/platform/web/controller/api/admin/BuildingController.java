@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jl.platform.common.PageQuery;
@@ -32,6 +33,12 @@ public class BuildingController extends BaseController {
 	@RequestMapping(value = "/building", method = RequestMethod.GET)
 	public Result<Pagination<Building>> listPage(PageQuery pageQuery) {
 		return buildingService.query(pageQuery);
+
+	}
+
+	@RequestMapping(value = "/building/queryById", method = RequestMethod.GET)
+	public Result<Building> queryById(@RequestParam("id") String id) {
+		return buildingService.queryById(id);
 
 	}
 

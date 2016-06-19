@@ -10,4 +10,10 @@ public interface BuildingService {
 	Result<String> save(Building building);
 
 	Result<Pagination<Building>> query(PageQuery pageQuery);
+
+	/**
+	 * @param id
+	 * @return Result<Building>
+	 */
+	Result<Building> queryById(String id);
 }
