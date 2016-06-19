@@ -1,10 +1,10 @@
 package com.jl.platform.domain;
 
+import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.domain.couchdb.CouchDBStore;
+import com.jl.platform.domain.couchdb.BaikeCouchDBStore;
 import com.jl.platform.service.BaikeService;
-import com.jl.platform.common.PageQuery;
 import com.jl.platform.service.model.Baike;
 import org.lightcouch.Response;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ import javax.annotation.Resource;
 @Service("baikeService")
 public class BaikeServiceImpl implements BaikeService {
     @Resource
-    private CouchDBStore couchDBStore;
+    private BaikeCouchDBStore baikeCouchDBStore;
 
     @Override
     public Result<String> save(Baike baike) {
-        Result<Response> result = couchDBStore.save(baike);
+        Result<Response> result = baikeCouchDBStore.save(baike);
         if (!result.isSuccess()) {
             return Result.create(result.getCode(), result.getMessage());
         }
@@ -30,6 +30,6 @@ public class BaikeServiceImpl implements BaikeService {
 
     @Override
     public Result<Pagination<Baike>> query(PageQuery pageQuery) {
-        return null;
+        return baikeCouchDBStore.list(pageQuery);
     }
 }

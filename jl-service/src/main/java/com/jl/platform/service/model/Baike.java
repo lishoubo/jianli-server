@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by lishoubo on 16/5/20.
+ * 监理百科
  */
 public class Baike extends BaseModel {
     @NotEmpty(message = "标题不能为空")

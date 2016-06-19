@@ -3,11 +3,15 @@ package com.jl.platform.service.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Pattern;
 
+/**
+ * 监理工程师
+ */
 public class Staff extends BaseModel {
     @NotEmpty(message = "姓名不能为空")
     private String name;
-    @NotEmpty(message = "等级必须是数字")
+    @Pattern(regexp = "\\d+", message = "等级必须是数字")
     private String grade;
     private String qualification;
     private String professional;
