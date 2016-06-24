@@ -4,45 +4,48 @@ package com.jl.platform.common;
  * Created by lishoubo on 16/5/18.
  */
 public enum StatusCode {
-    SUCCESS(200, "SUCCESS", "处理成功"),
-    CLIENT_INVALID_REQUEST(300, "CLIENT INVALID REQUEST", "不合法的客户端请求"),
-    NOT_FOUND(404, "NOT FOUND STAFF", "没有找到工程师"),
-    SYSTEM_ERROR(500, "SYSTEM ERROR", "服务端出错"),
+	SUCCESS(200, "SUCCESS", "处理成功"),
 
-    //
-    ;
-    private int code;
-    private String message;
-    private String description;
+	CLIENT_INVALID_REQUEST(300, "CLIENT INVALID REQUEST", "不合法的客户端请求"),
 
-    StatusCode(int code, String message, String viewMessage) {
-        this.code = code;
-        this.message = message;
-        this.description = viewMessage;
-    }
+	NOT_FOUND(404, "NOT FOUND STAFF", "没有找到工程师"),
 
-    public int getCode() {
-        return code;
-    }
+	SYSTEM_ERROR(500, "SYSTEM ERROR", "服务端出错"),
 
-    public String getMessage() {
-        return message;
-    }
+	//
+	;
+	private int code;
+	private String message;
+	private String description;
 
-    public String getDescription() {
-        return description;
-    }
+	StatusCode(int code, String message, String viewMessage) {
+		this.code = code;
+		this.message = message;
+		this.description = viewMessage;
+	}
 
-    public void setCode(int code) {
-        this.code = code;
-    }
+	public int getCode() {
+		return code;
+	}
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

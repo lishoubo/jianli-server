@@ -9,7 +9,7 @@ public interface BuildingService {
 
 	Result<String> save(Building building);
 
-	Result<Pagination<Building>> query(PageQuery pageQuery);
+	Result<Pagination<Building>> pageQuery(PageQuery pageQuery);
 
 	/**
 	 * @param id
@@ -21,12 +21,12 @@ public interface BuildingService {
 	 * @param building
 	 * @return Result<String>
 	 */
-	Result<String> update(Building building);
+	Result update(Building building);
 
 	/**
 	 * @param id
 	 * @param rev
 	 * @return Result<String>
 	 */
-	Result<String> delete(String id, String rev);
+	Result delete(String id);
 }
