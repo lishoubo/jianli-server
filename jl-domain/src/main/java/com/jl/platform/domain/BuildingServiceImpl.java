@@ -33,7 +33,7 @@ public class BuildingServiceImpl implements BuildingService {
 					.getStaffName());
 			if (staffResult == null || !staffResult.isSuccess()
 					|| staffResult.getData() == null) {
-				return Result.create(StatusCode.NOT_FOUND);
+				return Result.create(StatusCode.STAFF_NOT_FOUND);
 			}
 		}
 

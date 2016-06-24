@@ -1,18 +1,18 @@
 package com.jl.platform.web.controller.api.admin;
 
-import com.jl.platform.common.PageQuery;
-import com.jl.platform.common.Result;
-import com.jl.platform.service.BaikeService;
-import com.jl.platform.service.JournalService;
-import com.jl.platform.service.form.JournalForm;
-import com.jl.platform.service.model.Baike;
-import com.jl.platform.web.controller.BaseController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jl.platform.common.PageQuery;
+import com.jl.platform.common.Result;
+import com.jl.platform.service.JournalService;
+import com.jl.platform.service.form.JournalForm;
+import com.jl.platform.web.controller.BaseController;
 
 /**
  * Created by lishoubo on 16/6/18.
@@ -20,18 +20,23 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/admin")
 public class JournalController extends BaseController {
-    @Resource
-    private JournalService journalService;
+	@Resource
+	private JournalService journalService;
 
-    @RequestMapping(value = "/journal", method = RequestMethod.POST)
-    public Result<String> add(@Valid JournalForm journalForm) {
-        Result<String> result = journalService.save(journalForm);
-        return result;
-    }
+	@RequestMapping(value = "/journal", method = RequestMethod.POST)
+	public Result<String> add(@Valid JournalForm journalForm) {
+		Result<String> result = journalService.save(journalForm);
+		return result;
+	}
 
-    @RequestMapping(value = "/journal", method = RequestMethod.GET)
-    public Result list(PageQuery pageReq) {
-        return journalService.query(pageReq);
-    }
+	@RequestMapping(value = "/journal", method = RequestMethod.GET)
+	public Result list(PageQuery pageReq) {
+		return journalService.pageQery(pageReq);
+	}
+
+	@RequestMapping(value = "/journal/delete", method = RequestMethod.POST)
+	public Result delete(@RequestParam("id") String id) {
+		return journalService.delete(id);
+	}
 
 }

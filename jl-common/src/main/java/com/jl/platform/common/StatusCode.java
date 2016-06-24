@@ -8,7 +8,9 @@ public enum StatusCode {
 
 	CLIENT_INVALID_REQUEST(300, "CLIENT INVALID REQUEST", "不合法的客户端请求"),
 
-	NOT_FOUND(404, "NOT FOUND STAFF", "没有找到工程师"),
+	STAFF_NOT_FOUND(404, "NOT FOUND STAFF", "没有找到工程师"),
+
+	BUILDING_NOT_FOUND(404, "NOT FOUND STAFF", "没有找到相应的工程"),
 
 	SYSTEM_ERROR(500, "SYSTEM ERROR", "服务端出错"),
 

@@ -31,4 +31,12 @@ public class BuildingMongoDBStore extends MongoDBStore<Building> {
 	public Result<Building> queryById(String id) {
 		return find(ID, id);
 	}
+
+	/**
+	 * @param buildingName
+	 * @return Building
+	 */
+	public Result<Building> findByName(String buildingName) {
+		return find("name", buildingName);
+	}
 }

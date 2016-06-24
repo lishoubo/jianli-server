@@ -8,7 +8,13 @@ import com.jl.platform.service.model.Journal;
 
 public interface JournalService {
 
-    Result<String> save(JournalForm journalForm);
+	Result<String> save(JournalForm journalForm);
 
-    Result<Pagination<Journal>> query(PageQuery pageQuery);
+	Result<Pagination<Journal>> pageQery(PageQuery pageQuery);
+
+	/**
+	 * @param id
+	 * @return Result
+	 */
+	Result delete(String id);
 }

@@ -1,55 +1,69 @@
 package com.jl.platform.domain;
 
-import com.jl.platform.common.*;
-import com.jl.platform.domain.couchdb.BuildingCouchDBStore;
-import com.jl.platform.domain.couchdb.JournalCouchDBStore;
-import com.jl.platform.domain.couchdb.StaffCouchDBStore;
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.jl.platform.common.PageQuery;
+import com.jl.platform.common.Pagination;
+import com.jl.platform.common.Procedure;
+import com.jl.platform.common.Result;
+import com.jl.platform.common.StatusCode;
+import com.jl.platform.domain.mongodb.BuildingMongoDBStore;
+import com.jl.platform.domain.mongodb.JournalMongoDBStore;
+import com.jl.platform.domain.mongodb.StaffMongoDBStore;
 import com.jl.platform.service.JournalService;
 import com.jl.platform.service.form.JournalForm;
 import com.jl.platform.service.model.Building;
 import com.jl.platform.service.model.Journal;
 import com.jl.platform.service.model.Staff;
-import org.lightcouch.Response;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * Created by lishoubo on 16/6/18.
  */
 @Service("journalService")
 public class JournalServiceImpl implements JournalService {
-    @Resource
-    private JournalCouchDBStore journalCouchDBStore;
-    @Resource
-    private StaffCouchDBStore staffCouchDBStore;
-    @Resource
-    private BuildingCouchDBStore buildingCouchDBStore;
+	@Resource
+	private JournalMongoDBStore journalMongoDBStore;
+	@Resource
+	private StaffMongoDBStore staffMongoDBStore;
+	@Resource
+	private BuildingMongoDBStore buildingMongoDBStore;
 
-    @Override
-    public Result<String> save(JournalForm journalForm) {
-        Staff staff = staffCouchDBStore.find(journalForm.getStaffName());
-        if (staff == null) {
-            return Result.create(StatusCode.NOT_FOUND);
-        }
-        Building building = buildingCouchDBStore.find(journalForm.getBuildingName());
-        if (staff == null) {
-            return Result.create(StatusCode.NOT_FOUND);
-        }
-        building.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
+	@Override
+	public Result<String> save(JournalForm journalForm) {
+		Result<Staff> staffResult = staffMongoDBStore.findByName(journalForm
+				.getStaffName());
+		if (staffResult == null || staffResult.getData() == null) {
+			return Result.create(StatusCode.STAFF_NOT_FOUND);
+		}
+		Result<Building> buildingResult = buildingMongoDBStore
+				.findByName(journalForm.getBuildingName());
+		if (buildingResult == null || buildingResult.getData() == null) {
+			return Result.create(StatusCode.BUILDING_NOT_FOUND);
+		}
+		Building building = buildingResult.getData();
+		building.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
 
-        Journal journal = new Journal();
-        journal.setStaff(staff);
-        journal.setBuilding(building);
-        Result<Response> result = journalCouchDBStore.save(journal);
-        if (!result.isSuccess()) {
-            return Result.create(result.getCode(), result.getMessage());
-        }
-        return Result.create(result.getData().getId());
-    }
+		Journal journal = new Journal();
+		journal.setStaff(staffResult.getData());
+		journal.setBuilding(building);
 
-    @Override
-    public Result<Pagination<Journal>> query(PageQuery pageQuery) {
-        return journalCouchDBStore.list(pageQuery);
-    }
+		return journalMongoDBStore.save(journal);
+
+	}
+
+	@Override
+	public Result<Pagination<Journal>> pageQery(PageQuery pageQuery) {
+		return journalMongoDBStore.pageQery(pageQuery);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.jl.platform.service.JournalService#delete(java.lang.String)
+	 */
+	@Override
+	public Result delete(String id) {
+		return journalMongoDBStore.delete(id);
+	}
 }
