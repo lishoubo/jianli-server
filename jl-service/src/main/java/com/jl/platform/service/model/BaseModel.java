@@ -8,7 +8,6 @@ import java.util.Date;
  */
 public abstract class BaseModel implements Serializable {
 	private String _id;
-	private String _rev;
 	private String type;
 	protected Date updateTime;
 	protected Date createTime;
@@ -43,14 +42,6 @@ public abstract class BaseModel implements Serializable {
 
 	public void setId(String id) {
 		this._id = id;
-	}
-
-	public String getVersion() {
-		return _rev;
-	}
-
-	public void setVersion(String version) {
-		this._rev = version;
 	}
 
 }

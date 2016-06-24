@@ -16,8 +16,7 @@ public class StaffMongoDBStoreTest {
 
     @Test
     public void test_modal() throws Exception {
-        StaffMongoDBStore staffMongoDBStore = new StaffMongoDBStore();
-        staffMongoDBStore.afterPropertiesSet();
+        System.out.println(19 / 10);
 
     }
 

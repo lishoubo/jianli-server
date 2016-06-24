@@ -1,17 +1,21 @@
 package com.jl.platform.domain.mongodb;
 
 import com.alibaba.fastjson.JSON;
+import com.jl.platform.common.PageQuery;
+import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
 import com.jl.platform.common.StatusCode;
 import com.jl.platform.common.utils.IDUtils;
 import com.jl.platform.service.model.BaseModel;
+import com.mongodb.Block;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.CreateCollectionOptions;
+import com.mongodb.client.model.Filters;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.Document;
 import org.bson.codecs.DocumentCodec;
-import org.lightcouch.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -19,13 +23,17 @@ import org.springframework.beans.factory.InitializingBean;
 import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.mongodb.client.model.Sorts.ascending;
 
 /**
  * Created by lishoubo on 16/6/23.
  */
 public abstract class MongoDBStore<T extends BaseModel> implements InitializingBean {
     private static final int SIZE_IN_BYTES = 5 * 1024 * 1024;
-    private static final String ID = "_id";
+    protected static final String ID = "_id";
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -33,14 +41,16 @@ public abstract class MongoDBStore<T extends BaseModel> implements InitializingB
     private MongoDB mongoDB;
 
     private String type;
+    private Class<T> tClass;
     private DocumentCodec documentCodec;
-    private MongoCollection<Document> collection;
+    protected MongoCollection<Document> collection;
 
     @Override
     public void afterPropertiesSet() throws Exception {
         ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
         Type[] acts = pt.getActualTypeArguments();
-        this.type = StringUtils.uncapitalize(((Class<T>) acts[0]).getSimpleName());
+        tClass = (Class<T>) acts[0];
+        this.type = StringUtils.uncapitalize(tClass.getSimpleName());
         this.mongoDB.getMongoDatabase().getCollection(this.type);
 
         boolean needCreate = true;
@@ -75,6 +85,41 @@ public abstract class MongoDBStore<T extends BaseModel> implements InitializingB
         }
         return Result.create(StatusCode.SYSTEM_ERROR);
     }
+
+    protected Result<Pagination<T>> pageQuery0(PageQuery pageQuery) {
+        try {
+            FindIterable<Document> iterable = collection.find().sort(ascending("_id")).skip(pageQuery.getOffset()).limit(pageQuery.getPageSize());
+            final List<T> list = new ArrayList<T>(pageQuery.getPageSize());
+            iterable.forEach(new Block<Document>() {
+                @Override
+                public void apply(Document document) {
+                    list.add(JSON.parseObject(document.toJson(), tClass));
+                }
+            });
+            return Result.pagination(list, pageQuery, tablePage(pageQuery.getPageSize()));
+        } catch (Exception e) {
+            logger.error("[mongodb][query] exception.", e);
+        }
+        return Result.create(StatusCode.SYSTEM_ERROR);
+    }
+
+    public Result<T> find(String name, String value) {
+        try {
+            FindIterable<Document> documents = collection.find(Filters.eq(name, value));
+            if (!documents.iterator().hasNext()) {
+                return Result.create(StatusCode.NOT_FOUND);
+            }
+            return Result.create(JSON.parseObject(documents.iterator().next().toJson(), tClass));
+        } catch (Exception e) {
+            logger.error("[mongodb][find] exception.", e);
+        }
+        return Result.create(StatusCode.SYSTEM_ERROR);
+    }
+
+    private int tablePage(int pageSize) {
+        return (int) ((collection.count() + pageSize - 1) / pageSize);
+    }
+
 
     private String id() {
         return IDUtils.nextId();

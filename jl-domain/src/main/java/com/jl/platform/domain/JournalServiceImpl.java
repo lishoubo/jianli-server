@@ -1,14 +1,11 @@
 package com.jl.platform.domain;
 
 import com.jl.platform.common.*;
-import com.jl.platform.domain.couchdb.BaikeCouchDBStore;
 import com.jl.platform.domain.couchdb.BuildingCouchDBStore;
 import com.jl.platform.domain.couchdb.JournalCouchDBStore;
 import com.jl.platform.domain.couchdb.StaffCouchDBStore;
-import com.jl.platform.service.BaikeService;
 import com.jl.platform.service.JournalService;
 import com.jl.platform.service.form.JournalForm;
-import com.jl.platform.service.model.Baike;
 import com.jl.platform.service.model.Building;
 import com.jl.platform.service.model.Journal;
 import com.jl.platform.service.model.Staff;
@@ -16,7 +13,6 @@ import org.lightcouch.Response;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by lishoubo on 16/6/18.
@@ -34,11 +30,11 @@ public class JournalServiceImpl implements JournalService {
     public Result<String> save(JournalForm journalForm) {
         Staff staff = staffCouchDBStore.find(journalForm.getStaffName());
         if (staff == null) {
-            return Result.create(StatusCode.NOT_FOUND_STAFF);
+            return Result.create(StatusCode.NOT_FOUND);
         }
         Building building = buildingCouchDBStore.find(journalForm.getBuildingName());
         if (staff == null) {
-            return Result.create(StatusCode.NOT_FOUND_BUILDING);
+            return Result.create(StatusCode.NOT_FOUND);
         }
         building.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
 

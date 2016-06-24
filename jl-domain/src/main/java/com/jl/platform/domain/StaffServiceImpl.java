@@ -1,59 +1,43 @@
 package com.jl.platform.domain;
 
-import javax.annotation.Resource;
-
-import com.jl.platform.domain.mongodb.StaffMongoDBStore;
-import org.lightcouch.Response;
-import org.springframework.stereotype.Service;
-
 import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.domain.couchdb.StaffCouchDBStore;
+import com.jl.platform.domain.mongodb.StaffMongoDBStore;
 import com.jl.platform.service.StaffService;
 import com.jl.platform.service.model.Staff;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service("staffService")
 public class StaffServiceImpl implements StaffService {
-	@Resource
-	private StaffCouchDBStore staffCouchDBStore;
-	@Resource
-	private StaffMongoDBStore staffMongoDBStore;
 
-	@Override
-	public Result<String> save(Staff staff) {
-		Result responseResult = staffMongoDBStore.save(staff);
-		if (!responseResult.isSuccess()) {
-			return Result.create(responseResult.getCode(),
-					responseResult.getMessage());
-		}
-		return Result.create(responseResult.getData());
-	}
+    @Resource
+    private StaffMongoDBStore staffMongoDBStore;
 
-	@Override
-	public Result<Pagination<Staff>> query(PageQuery pageQuery) {
-		return staffCouchDBStore.pageQuery(pageQuery);
-	}
+    @Override
+    public Result<String> save(Staff staff) {
+        Result responseResult = staffMongoDBStore.save(staff);
+        if (!responseResult.isSuccess()) {
+            return Result.create(responseResult.getCode(),
+                    responseResult.getMessage());
+        }
+        return Result.create(responseResult.getData());
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.jl.platform.service.StaffService#queryByTitle(java.lang.String)
-	 */
-	@Override
-	public Result queryByName(String name) {
-		Staff staff = staffCouchDBStore.find(name);
+    @Override
+    public Result<Pagination<Staff>> query(PageQuery pageQuery) {
+        return staffMongoDBStore.pageQuery(pageQuery);
+    }
 
-		return Result.create(staff);
-	}
+    @Override
+    public Result<Staff> queryByName(String name) {
+        return staffMongoDBStore.findByName(name);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.jl.platform.service.StaffService#queryById(java.lang.String)
-	 */
-	@Override
-	public Result queryById(String id) {
-		Staff staff = staffCouchDBStore.queryById(id);
-
-		return Result.create(staff);
-	}
+    @Override
+    public Result queryById(String id) {
+        return staffMongoDBStore.queryById(id);
+    }
 }

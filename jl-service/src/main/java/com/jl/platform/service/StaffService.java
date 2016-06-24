@@ -22,15 +22,7 @@ public interface StaffService {
 	 */
 	Result<Pagination<Staff>> query(PageQuery pageQuery);
 
-	/**
-	 * @param name
-	 * @return Result
-	 */
-	Result queryByName(String name);
-
-	/**
-	 * @param id
-	 * @return Result
-	 */
 	Result queryById(String id);
+
+	Result<Staff> queryByName(String name);
 }

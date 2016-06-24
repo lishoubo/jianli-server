@@ -6,6 +6,9 @@ import com.jl.platform.common.Result;
 import com.jl.platform.common.StatusCode;
 import com.jl.platform.domain.couchdb.CouchDBStore;
 import com.jl.platform.service.model.Staff;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +20,14 @@ import java.util.List;
 public class StaffMongoDBStore extends MongoDBStore<Staff> {
 
     public Result<Pagination<Staff>> pageQuery(PageQuery pageQuery) {
-        return Result.create(StatusCode.SYSTEM_ERROR);
+        return pageQuery0(pageQuery);
     }
 
-    public Staff find(String name) {
-        return null;
+    public Result<Staff> findByName(String name) {
+        return find("name", name);
     }
 
+    public Result<Staff> queryById(String id) {
+        return find(ID, id);
+    }
 }

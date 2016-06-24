@@ -32,7 +32,7 @@ public class BuildingServiceImpl implements BuildingService {
 		if (StringUtils.isNoneBlank(building.getStaffName())) {
 			Staff staff = staffCouchDBStore.find(building.getStaffName());
 			if (staff == null) {
-				return Result.create(StatusCode.NOT_FOUND_STAFF);
+				return Result.create(StatusCode.NOT_FOUND);
 			}
 		}
 
