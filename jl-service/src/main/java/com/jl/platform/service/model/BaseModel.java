@@ -9,8 +9,8 @@ import java.util.Date;
 public abstract class BaseModel implements Serializable {
 	private String _id;
 	private String type;
-	protected Date updateTime;
-	protected Date createTime;
+	protected Date updateDate;
+	protected Date createDate;
 
 	public String getType() {
 		return type;
@@ -20,20 +20,20 @@ public abstract class BaseModel implements Serializable {
 		this.type = type;
 	}
 
-	public Date getUpdateTime() {
-		return updateTime;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
-	public Date getCreateTime() {
-		return createTime;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 	public String getId() {
