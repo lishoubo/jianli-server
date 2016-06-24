@@ -13,6 +13,11 @@
         <constructor-arg name="configFileName" value="couchdb.properties"/>
     </bean>
 
+    <bean id="mongoClient" class="com.mongodb.MongoClient"/>
+    <bean id="mongoDB" class="com.jl.platform.domain.mongodb.MongoDB">
+        <property name="dbName" value="jianli"/>
+    </bean>
+
 
 </beans>
 

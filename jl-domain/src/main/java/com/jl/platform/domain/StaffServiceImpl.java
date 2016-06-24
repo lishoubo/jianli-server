@@ -2,6 +2,7 @@ package com.jl.platform.domain;
 
 import javax.annotation.Resource;
 
+import com.jl.platform.domain.mongodb.StaffMongoDBStore;
 import org.lightcouch.Response;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +17,17 @@ import com.jl.platform.service.model.Staff;
 public class StaffServiceImpl implements StaffService {
 	@Resource
 	private StaffCouchDBStore staffCouchDBStore;
+	@Resource
+	private StaffMongoDBStore staffMongoDBStore;
 
 	@Override
 	public Result<String> save(Staff staff) {
-		Result<Response> responseResult = staffCouchDBStore.save(staff);
+		Result responseResult = staffMongoDBStore.save(staff);
 		if (!responseResult.isSuccess()) {
 			return Result.create(responseResult.getCode(),
 					responseResult.getMessage());
 		}
-		return Result.create(responseResult.getData().getId());
+		return Result.create(responseResult.getData());
 	}
 
 	@Override

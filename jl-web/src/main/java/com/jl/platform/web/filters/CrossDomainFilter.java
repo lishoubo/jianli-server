@@ -30,7 +30,7 @@ public class CrossDomainFilter implements Filter {
                          FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) req;
         HttpServletResponse httpResponse = (HttpServletResponse) resp;
-        setCros(httpResponse);
+        setCros(httpRequest, httpResponse);
         if (httpRequest.getMethod().equalsIgnoreCase("OPTION")) {
             return;
         }
@@ -39,10 +39,10 @@ public class CrossDomainFilter implements Filter {
 
     }
 
-    private void setCros(HttpServletResponse httpResponse) {
-        httpResponse.setHeader(ACAO, "*");
-        httpResponse.setHeader(ACAM, "POST, GET, PUT, DELETE");
-        httpResponse.setHeader(ACAH, "*");
+    private void setCros(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
+        httpResponse.setHeader(ACAO, httpRequest.getHeader("Origin"));
+        httpResponse.setHeader(ACAM, "POST, GET, DELETE, UPDATE");
+        httpResponse.setHeader(ACAH, "x-requested-with,content-type");
         httpResponse.setHeader(ACMG, "0");
         httpResponse.setHeader(CC, "no-cache");
         httpResponse.setHeader(ACAC, "true");
