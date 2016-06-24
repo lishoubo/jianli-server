@@ -1,17 +1,11 @@
 package com.jl.platform.domain.mongodb;
 
+import org.springframework.stereotype.Service;
+
 import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.common.StatusCode;
-import com.jl.platform.domain.couchdb.CouchDBStore;
 import com.jl.platform.service.model.Staff;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.model.Filters;
-import org.bson.Document;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by lishoubo on 16/6/18.
@@ -19,15 +13,16 @@ import java.util.List;
 @Service
 public class StaffMongoDBStore extends MongoDBStore<Staff> {
 
-    public Result<Pagination<Staff>> pageQuery(PageQuery pageQuery) {
-        return pageQuery0(pageQuery);
-    }
+	public Result<Pagination<Staff>> pageQuery(PageQuery pageQuery) {
+		return pageQuery0(pageQuery);
+	}
 
-    public Result<Staff> findByName(String name) {
-        return find("name", name);
-    }
+	public Result<Staff> findByName(String name) {
+		return find("name", name);
+	}
 
-    public Result<Staff> queryById(String id) {
-        return find(ID, id);
-    }
+	public Result<Staff> queryById(String id) {
+		return find(ID, id);
+	}
+
 }

@@ -25,4 +25,16 @@ public interface StaffService {
 	Result queryById(String id);
 
 	Result<Staff> queryByName(String name);
+
+	/**
+	 * @param id
+	 * @return Result
+	 */
+	Result delete(String id);
+
+	/**
+	 * @param staff
+	 * @return Result
+	 */
+	Result update(Staff staff);
 }
