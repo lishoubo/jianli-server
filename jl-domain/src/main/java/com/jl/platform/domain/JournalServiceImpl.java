@@ -53,6 +53,7 @@ public class JournalServiceImpl implements JournalService {
 		journal.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
 		journal.setCreateDate(String.valueOf(new Date().getTime()));
 		journal.setUpdateDate(String.valueOf(new Date().getTime()));
+		journal.setCover(journalForm.getCover());
 
 		return journalMongoDBStore.save(journal);
 
@@ -105,6 +106,7 @@ public class JournalServiceImpl implements JournalService {
 		journal.setProcedure(Procedure.valueOf(updateJournalForm.getProcedure()));
 		journal.setCreateDate(String.valueOf(new Date().getTime()));
 		journal.setUpdateDate(String.valueOf(new Date().getTime()));
+		journal.setCover(updateJournalForm.getCover());
 
 		return journalMongoDBStore.update(journal);
 	}

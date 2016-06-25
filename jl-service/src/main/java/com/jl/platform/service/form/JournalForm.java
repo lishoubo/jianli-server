@@ -30,6 +30,8 @@ public class JournalForm {
 	@NotEmpty(message = "必须录入内容")
 	private String content;
 
+	private String cover;
+
 	public String getStaff() {
 		return staff;
 	}
@@ -61,4 +63,13 @@ public class JournalForm {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getCover() {
+		return cover;
+	}
+
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
+
 }
