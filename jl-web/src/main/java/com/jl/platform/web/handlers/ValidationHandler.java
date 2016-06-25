@@ -5,6 +5,7 @@ import com.jl.platform.common.StatusCode;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,10 +16,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class ValidationHandler {
 
-    @ExceptionHandler(BindException.class)
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class, BindException.class})
     @ResponseBody
-    public Result processValidationError(BindException ex) {
-        BindingResult result = ex.getBindingResult();
+    public Result processValidationError(Exception ex) {
+        BindingResult result;
+        if (ex instanceof MethodArgumentNotValidException) {
+            result = ((MethodArgumentNotValidException) ex).getBindingResult();
+        } else if (ex instanceof BindException) {
+            result = ((BindException) ex).getBindingResult();
+        } else {
+            return Result.create(StatusCode.SYSTEM_ERROR);
+        }
+
         FieldError error = result.getFieldError();
         return processFieldError(error);
     }
