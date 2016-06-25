@@ -28,9 +28,9 @@ public class BuildingServiceImpl implements BuildingService {
 
 	@Override
 	public Result<String> save(Building building) {
-		if (StringUtils.isNoneBlank(building.getStaffName())) {
+		if (StringUtils.isNoneBlank(building.getStaff())) {
 			Result<Staff> staffResult = staffMongoDBStore.findByName(building
-					.getStaffName());
+					.getStaff());
 			if (staffResult == null || !staffResult.isSuccess()
 					|| staffResult.getData() == null) {
 				return Result.create(StatusCode.STAFF_NOT_FOUND);

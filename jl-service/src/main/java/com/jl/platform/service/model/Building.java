@@ -9,7 +9,7 @@ import com.jl.platform.service.model.common.Address;
  * Created by lishoubo on 16/6/19. 项目工程
  */
 public class Building extends BaseModel {
-	private String staffName;
+	private String staff;
 	/** 项目名称 */
 	@NotEmpty(message = "请录入项目名称")
 	private String name;
@@ -33,12 +33,12 @@ public class Building extends BaseModel {
 		this.procedure = procedure;
 	}
 
-	public String getStaffName() {
-		return staffName;
+	public String getStaff() {
+		return staff;
 	}
 
-	public void setStaffName(String staffName) {
-		this.staffName = staffName;
+	public void setStaff(String staff) {
+		this.staff = staff;
 	}
 
 	public Address getAddress() {

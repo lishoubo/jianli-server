@@ -11,7 +11,7 @@ public class Address {
 	private String district;
 
 	/** 详细地址 */
-	private String detailedAddr;
+	private String location;
 
 	public String getDistrict() {
 		return district;
@@ -22,11 +22,11 @@ public class Address {
 	}
 
 	public String getDetailedAddr() {
-		return detailedAddr;
+		return location;
 	}
 
 	public void setDetailedAddr(String detailedAddr) {
-		this.detailedAddr = detailedAddr;
+		this.location = detailedAddr;
 	}
 
 }
