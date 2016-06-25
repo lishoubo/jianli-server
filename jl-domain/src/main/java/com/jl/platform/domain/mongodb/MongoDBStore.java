@@ -38,7 +38,7 @@ import com.mongodb.client.result.UpdateResult;
  */
 public abstract class MongoDBStore<T extends BaseModel> implements
 		InitializingBean {
-	private static final int SIZE_IN_BYTES = 5 * 1024 * 1024;
+	protected static final int SIZE_IN_BYTES = 5 * 1024 * 1024;
 	protected static final String ID = "_id";
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -55,11 +55,39 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 	public void afterPropertiesSet() throws Exception {
 		ParameterizedType pt = (ParameterizedType) this.getClass()
 				.getGenericSuperclass();
-		Type[] acts = pt.getActualTypeArguments();
-		tClass = (Class<T>) acts[0];
-		this.type = StringUtils.uncapitalize(tClass.getSimpleName());
-		this.mongoDB.getMongoDatabase().getCollection(this.type);
+		init(pt);
 
+		initCollection();
+
+	}
+
+	/**
+	 * void
+	 */
+	private void initCollection() {
+		if (needCreate()) {
+			createCollection();
+			return;
+		}
+		this.collection = this.mongoDB.getMongoDatabase().getCollection(
+				this.type);
+	}
+
+	/**
+	 * void
+	 */
+	protected void createCollection() {
+		CreateCollectionOptions createCollectionOptions = new CreateCollectionOptions();
+		createCollectionOptions.autoIndex(true);
+		createCollectionOptions.sizeInBytes(SIZE_IN_BYTES);
+		this.mongoDB.getMongoDatabase().createCollection(this.type,
+				createCollectionOptions);
+	}
+
+	/**
+	 * @return boolean
+	 */
+	private boolean needCreate() {
 		boolean needCreate = true;
 		MongoCursor<String> iterator = this.mongoDB.getMongoDatabase()
 				.listCollectionNames().iterator();
@@ -70,15 +98,18 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 				break;
 			}
 		}
-		if (needCreate) {
-			CreateCollectionOptions createCollectionOptions = new CreateCollectionOptions();
-			createCollectionOptions.autoIndex(true);
-			createCollectionOptions.sizeInBytes(SIZE_IN_BYTES);
-			this.mongoDB.getMongoDatabase().createCollection(this.type,
-					createCollectionOptions);
-		}
-		this.collection = this.mongoDB.getMongoDatabase().getCollection(
-				this.type);
+		return needCreate;
+	}
+
+	/**
+	 * @param pt
+	 *            void
+	 */
+	private void init(ParameterizedType pt) {
+		Type[] acts = pt.getActualTypeArguments();
+		tClass = (Class<T>) acts[0];
+		this.type = StringUtils.uncapitalize(tClass.getSimpleName());
+		this.mongoDB.getMongoDatabase().getCollection(this.type);
 		this.documentCodec = new DocumentCodec();
 	}
 
@@ -163,4 +194,29 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 	private String id() {
 		return IDUtils.nextId();
 	}
+
+	public MongoDB getMongoDB() {
+		return mongoDB;
+	}
+
+	public void setMongoDB(MongoDB mongoDB) {
+		this.mongoDB = mongoDB;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public MongoCollection<Document> getCollection() {
+		return collection;
+	}
+
+	public void setCollection(MongoCollection<Document> collection) {
+		this.collection = collection;
+	}
+
 }
