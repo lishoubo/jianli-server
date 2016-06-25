@@ -11,17 +11,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 public abstract class BaseModel implements Serializable {
 	private static final long serialVersionUID = 1295452213657638490L;
 	private String _id;
-	private String type;
 	protected Date updateDate;
 	protected Date createDate;
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
 
 	public Date getUpdateDate() {
 		return updateDate;
