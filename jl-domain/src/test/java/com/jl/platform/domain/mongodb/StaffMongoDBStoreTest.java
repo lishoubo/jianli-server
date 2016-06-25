@@ -23,7 +23,7 @@ public class StaffMongoDBStoreTest {
 	public void test_bench() throws Exception {
 		Staff staff = new Staff();
 		staff.setName("name");
-		staff.setCreateDate(String.valueOf(new Date().getTime()));
+		staff.setCreateDate(new Date());
 
 		int times = 10000;
 		long begin = System.currentTimeMillis();

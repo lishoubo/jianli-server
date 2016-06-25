@@ -51,9 +51,10 @@ public class JournalServiceImpl implements JournalService {
 		journal.setStaff(staffResult.getData());
 		journal.setBuilding(building);
 		journal.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
-		journal.setCreateDate(String.valueOf(new Date().getTime()));
-		journal.setUpdateDate(String.valueOf(new Date().getTime()));
+		journal.setCreateDate(new Date());
+		journal.setUpdateDate(new Date());
 		journal.setCover(journalForm.getCover());
+		journal.setContent(journalForm.getContent());
 
 		return journalMongoDBStore.save(journal);
 
@@ -104,9 +105,10 @@ public class JournalServiceImpl implements JournalService {
 		journal.setStaff(staffResult.getData());
 		journal.setBuilding(building);
 		journal.setProcedure(Procedure.valueOf(updateJournalForm.getProcedure()));
-		journal.setCreateDate(String.valueOf(new Date().getTime()));
-		journal.setUpdateDate(String.valueOf(new Date().getTime()));
+		journal.setCreateDate(new Date());
+		journal.setUpdateDate(new Date());
 		journal.setCover(updateJournalForm.getCover());
+		journal.setContent(updateJournalForm.getContent());
 
 		return journalMongoDBStore.update(journal);
 	}

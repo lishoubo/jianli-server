@@ -21,8 +21,8 @@ public class StaffServiceImpl implements StaffService {
 
 	@Override
 	public Result<String> save(Staff staff) {
-		staff.setCreateDate(String.valueOf(new Date().getTime()));
-		staff.setUpdateDate(String.valueOf(new Date().getTime()));
+		staff.setCreateDate(new Date());
+		staff.setUpdateDate(new Date());
 		Result responseResult = staffMongoDBStore.save(staff);
 		if (!responseResult.isSuccess()) {
 			return Result.create(responseResult.getCode(),
@@ -63,7 +63,7 @@ public class StaffServiceImpl implements StaffService {
 	 */
 	@Override
 	public Result update(Staff staff) {
-		staff.setUpdateDate(String.valueOf(new Date().getTime()));
+		staff.setUpdateDate(new Date());
 		return staffMongoDBStore.update(staff);
 	}
 }
