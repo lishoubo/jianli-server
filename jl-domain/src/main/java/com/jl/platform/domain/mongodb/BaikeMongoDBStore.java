@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -54,8 +55,11 @@ public class BaikeMongoDBStore extends MongoDBStore<Baike> {
 	public Result<Pagination<Baike>> queryByCondition(
 			BaikeQueryCondition condition) {
 		try {
-			FindIterable<Document> iterable = collection
-					.find(Filters.eq("procedure", condition.getProcedure()))
+			Bson filter = condition.getProcedure() == null ? Filters
+					.exists("procedure") : Filters.eq("procedure",
+					condition.getProcedure());
+
+			FindIterable<Document> iterable = collection.find(filter)
 					.sort(ascending(condition.getSortConditions()))
 					.skip(condition.getOffset()).limit(condition.getPageSize());
 			final List<Baike> list = new ArrayList<Baike>(
