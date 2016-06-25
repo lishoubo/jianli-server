@@ -24,9 +24,6 @@ public class StaffMongoDBStoreTest {
 		Staff staff = new Staff();
 		staff.setType("type");
 		staff.setName("name");
-		staff.setGrade("grade");
-		staff.setProfessional("profefe");
-		staff.setQualification("quqfefe");
 		staff.setCreateDate(new Date());
 
 		int times = 10000;
