@@ -50,8 +50,8 @@ public class JournalServiceImpl implements JournalService {
 		Journal journal = new Journal();
 		journal.setStaff(staffResult.getData());
 		journal.setBuilding(building);
-		journal.setCreateDate(new Date());
-		journal.setUpdateDate(new Date());
+		journal.setCreateDate(new Date().getTime());
+		journal.setUpdateDate(new Date().getTime());
 
 		return journalMongoDBStore.save(journal);
 

@@ -1,7 +1,6 @@
 package com.jl.platform.service.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -11,22 +10,22 @@ import com.alibaba.fastjson.annotation.JSONField;
 public abstract class BaseModel implements Serializable {
 	private static final long serialVersionUID = 1295452213657638490L;
 	private String _id;
-	protected Date updateDate;
-	protected Date createDate;
+	protected long updateDate;
+	protected long createDate;
 
-	public Date getUpdateDate() {
+	public long getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(long updateDate) {
 		this.updateDate = updateDate;
 	}
 
-	public Date getCreateDate() {
+	public long getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(long createDate) {
 		this.createDate = createDate;
 	}
 
