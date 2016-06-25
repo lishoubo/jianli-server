@@ -15,7 +15,7 @@ public class Baike extends BaseModel {
 	private String content;
 	@NotEmpty(message = "作者不能为空")
 	private String author;
-
+	private String cover;
 	private Integer pv;
 
 	public String getTitle() {
@@ -56,5 +56,13 @@ public class Baike extends BaseModel {
 
 	public void setPv(Integer pv) {
 		this.pv = pv;
+	}
+
+	public String getCover() {
+		return cover;
+	}
+
+	public void setCover(String cover) {
+		this.cover = cover;
 	}
 }
