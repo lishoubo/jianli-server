@@ -1,7 +1,5 @@
 package com.jl.platform.service.model;
 
-import javax.validation.constraints.Pattern;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -10,7 +8,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Staff extends BaseModel {
 	@NotEmpty(message = "姓名不能为空")
 	private String name;
-	@Pattern(regexp = "\\d+", message = "等级必须是数字")
 	/** 资历 */
 	private int qualification;
 	/** 监理头像URL */
@@ -25,7 +22,7 @@ public class Staff extends BaseModel {
 	}
 
 	public int getQualification() {
-		return qualification;
+		return qualification > 0 ? qualification : 1;
 	}
 
 	public void setQualification(int qualification) {
