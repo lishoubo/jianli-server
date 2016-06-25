@@ -22,7 +22,6 @@ public class StaffMongoDBStoreTest {
 	@Test
 	public void test_bench() throws Exception {
 		Staff staff = new Staff();
-		staff.setType("type");
 		staff.setName("name");
 		staff.setCreateDate(new Date());
 

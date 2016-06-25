@@ -3,17 +3,19 @@ package com.jl.platform.service.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.jl.platform.common.Procedure;
+import com.jl.platform.service.model.common.Address;
 
 /**
  * Created by lishoubo on 16/6/19. 项目工程
  */
 public class Building extends BaseModel {
 	private String staffName;
+	/** 项目名称 */
 	@NotEmpty(message = "请录入项目名称")
-	private String name; // 项目名称
-	private String distinct; // 区
-	private String address;
-	private Procedure procedure;// 当前阶段
+	private String name;
+	/** 当前阶段 */
+	private Procedure procedure;
+	private Address address;
 
 	public String getName() {
 		return name;
@@ -21,22 +23,6 @@ public class Building extends BaseModel {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDistinct() {
-		return distinct;
-	}
-
-	public void setDistinct(String distinct) {
-		this.distinct = distinct;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public Procedure getProcedure() {
@@ -53,6 +39,14 @@ public class Building extends BaseModel {
 
 	public void setStaffName(String staffName) {
 		this.staffName = staffName;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }
