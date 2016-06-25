@@ -35,12 +35,12 @@ public class JournalServiceImpl implements JournalService {
 	@Override
 	public Result<String> save(JournalForm journalForm) {
 		Result<Staff> staffResult = staffMongoDBStore.findByName(journalForm
-				.getStaffName());
+				.getStaff());
 		if (staffResult == null || staffResult.getData() == null) {
 			return Result.create(StatusCode.STAFF_NOT_FOUND);
 		}
 		Result<Building> buildingResult = buildingMongoDBStore
-				.findByName(journalForm.getBuildingName());
+				.findByName(journalForm.getBuilding());
 		if (buildingResult == null || buildingResult.getData() == null) {
 			return Result.create(StatusCode.BUILDING_NOT_FOUND);
 		}

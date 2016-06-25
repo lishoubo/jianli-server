@@ -1,12 +1,16 @@
 package com.jl.platform.service.model;
 
+import com.jl.platform.common.Procedure;
+
 /**
  * Created by lishoubo on 16/6/19. 监理日志
  */
 public class Journal extends BaseModel {
 	private Building building;
 	private Staff staff;
-	private JournalStage stage;
+	private Procedure procedure;
+	private String content;
+	private String cover;
 
 	public Building getBuilding() {
 		return building;
@@ -24,12 +28,28 @@ public class Journal extends BaseModel {
 		this.staff = staff;
 	}
 
-	public JournalStage getStage() {
-		return stage;
+	public Procedure getProcedure() {
+		return procedure;
 	}
 
-	public void setStage(JournalStage stage) {
-		this.stage = stage;
+	public void setProcedure(Procedure procedure) {
+		this.procedure = procedure;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getCover() {
+		return cover;
+	}
+
+	public void setCover(String cover) {
+		this.cover = cover;
 	}
 
 }
