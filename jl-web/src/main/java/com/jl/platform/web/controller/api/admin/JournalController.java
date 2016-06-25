@@ -40,4 +40,11 @@ public class JournalController extends BaseController {
 		return journalService.delete(id);
 	}
 
+	@RequestMapping(value = "/journal/update", method = RequestMethod.POST)
+	public Result delete(@Valid @RequestBody JournalForm journalForm) {
+		// return journalService.update(journalForm);
+		// TODO
+		return null;
+	}
+
 }
