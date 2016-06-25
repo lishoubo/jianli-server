@@ -11,6 +11,7 @@ import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Result;
 import com.jl.platform.service.BaikeService;
 import com.jl.platform.service.model.Baike;
+import com.jl.platform.service.model.BaikeQueryCondition;
 import com.jl.platform.web.controller.BaseController;
 
 /**
@@ -36,6 +37,11 @@ public class BaikeController extends BaseController {
 	@RequestMapping(value = "/baike/queryById", method = RequestMethod.GET)
 	public Result queryById(@RequestParam("id") String id) {
 		return baikeService.queryById(id);
+	}
+
+	@RequestMapping(value = "/baike/queryByCondition", method = RequestMethod.POST)
+	public Result queryByCondition(BaikeQueryCondition condition) {
+		return baikeService.queryByCondition(condition);
 	}
 
 	@RequestMapping(value = "/baike/delete", method = RequestMethod.POST)

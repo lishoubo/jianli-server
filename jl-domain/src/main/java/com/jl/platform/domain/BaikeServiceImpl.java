@@ -10,6 +10,7 @@ import com.jl.platform.common.Result;
 import com.jl.platform.domain.mongodb.BaikeMongoDBStore;
 import com.jl.platform.service.BaikeService;
 import com.jl.platform.service.model.Baike;
+import com.jl.platform.service.model.BaikeQueryCondition;
 
 /**
  * Created by lishoubo on 16/6/18.
@@ -60,5 +61,17 @@ public class BaikeServiceImpl implements BaikeService {
 	@Override
 	public Result update(Baike baike) {
 		return baikeMongoDBStore.update(baike);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.jl.platform.service.BaikeService#queryByCondition(com.jl.platform
+	 * .service.model.BaikeQueryCondition)
+	 */
+	@Override
+	public Result queryByCondition(BaikeQueryCondition condition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

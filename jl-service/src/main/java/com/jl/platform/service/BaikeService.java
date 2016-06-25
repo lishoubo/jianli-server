@@ -4,6 +4,7 @@ import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
 import com.jl.platform.service.model.Baike;
+import com.jl.platform.service.model.BaikeQueryCondition;
 
 public interface BaikeService {
 
@@ -28,4 +29,10 @@ public interface BaikeService {
 	 * @return Result
 	 */
 	Result update(Baike baike);
+
+	/**
+	 * @param condition
+	 * @return Result
+	 */
+	Result queryByCondition(BaikeQueryCondition condition);
 }
