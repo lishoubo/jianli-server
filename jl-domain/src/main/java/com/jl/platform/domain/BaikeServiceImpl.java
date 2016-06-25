@@ -24,8 +24,8 @@ public class BaikeServiceImpl implements BaikeService {
 
 	@Override
 	public Result<String> save(Baike baike) {
-		baike.setCreateDate(new Date().getTime());
-		baike.setUpdateDate(new Date().getTime());
+		baike.setCreateDate(String.valueOf(new Date().getTime()));
+		baike.setUpdateDate(String.valueOf(new Date().getTime()));
 		Result<String> result = baikeMongoDBStore.save(baike);
 		if (!result.isSuccess()) {
 			return Result.create(result.getCode(), result.getMessage());
@@ -64,7 +64,7 @@ public class BaikeServiceImpl implements BaikeService {
 	 */
 	@Override
 	public Result update(Baike baike) {
-		baike.setUpdateDate(new Date().getTime());
+		baike.setUpdateDate(String.valueOf(new Date().getTime()));
 		return baikeMongoDBStore.update(baike);
 	}
 

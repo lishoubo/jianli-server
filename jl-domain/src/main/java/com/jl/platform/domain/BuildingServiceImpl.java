@@ -39,7 +39,7 @@ public class BuildingServiceImpl implements BuildingService {
 			}
 		}
 
-		building.setCreateDate(new Date().getTime());
+		building.setCreateDate(String.valueOf(new Date().getTime()));
 		return buildingMongoDBStore.save(building);
 
 	}
@@ -67,7 +67,7 @@ public class BuildingServiceImpl implements BuildingService {
 	 */
 	@Override
 	public Result update(Building building) {
-		building.setUpdateDate(new Date().getTime());
+		building.setUpdateDate(String.valueOf(new Date().getTime()));
 		return buildingMongoDBStore.update(building);
 	}
 

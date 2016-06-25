@@ -10,22 +10,22 @@ import com.alibaba.fastjson.annotation.JSONField;
 public abstract class BaseModel implements Serializable {
 	private static final long serialVersionUID = 1295452213657638490L;
 	private String _id;
-	protected long updateDate;
-	protected long createDate;
+	protected String updateDate;
+	protected String createDate;
 
-	public long getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(long updateDate) {
+	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
 
-	public long getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(long createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
