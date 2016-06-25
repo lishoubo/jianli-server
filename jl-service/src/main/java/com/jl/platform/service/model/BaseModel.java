@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public abstract class BaseModel implements Serializable {
 	private static final long serialVersionUID = 1295452213657638490L;
-	private String _id;
+	protected String _id;
 	protected Date updateDate;
 	protected Date createDate;
 
