@@ -71,7 +71,6 @@ public class BaikeServiceImpl implements BaikeService {
 	 */
 	@Override
 	public Result queryByCondition(BaikeQueryCondition condition) {
-		// TODO Auto-generated method stub
-		return null;
+		return baikeMongoDBStore.queryByCondition(condition);
 	}
 }
