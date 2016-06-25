@@ -53,7 +53,7 @@ public class StaffController extends BaseController {
 	}
 
 	@RequestMapping(value = "/staffs/update", method = RequestMethod.POST)
-	public Result update(Staff staff) {
+	public Result update(@Valid @RequestBody Staff staff) {
 		return staffService.update(staff);
 	}
 

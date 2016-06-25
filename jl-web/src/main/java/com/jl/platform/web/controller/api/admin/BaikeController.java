@@ -1,7 +1,9 @@
 package com.jl.platform.web.controller.api.admin;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +26,7 @@ public class BaikeController extends BaseController {
 	private BaikeService baikeService;
 
 	@RequestMapping(value = "/baike", method = RequestMethod.POST)
-	public Result<String> add(Baike baike) {
+	public Result<String> add(@Valid @RequestBody Baike baike) {
 		Result<String> result = baikeService.save(baike);
 		return result;
 	}
@@ -50,7 +52,7 @@ public class BaikeController extends BaseController {
 	}
 
 	@RequestMapping(value = "/baike/update", method = RequestMethod.POST)
-	public Result update(Baike baike) {
+	public Result update(@Valid @RequestBody Baike baike) {
 		return baikeService.update(baike);
 	}
 

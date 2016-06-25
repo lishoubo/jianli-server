@@ -43,7 +43,7 @@ public class BuildingController extends BaseController {
 	}
 
 	@RequestMapping(value = "/building/update", method = RequestMethod.POST)
-	public Result<String> update(@Valid Building building) {
+	public Result<String> update(@Valid @RequestBody Building building) {
 		return buildingService.update(building);
 	}
 

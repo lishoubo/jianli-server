@@ -3,6 +3,7 @@ package com.jl.platform.web.controller.api.admin;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,7 @@ public class JournalController extends BaseController {
 	private JournalService journalService;
 
 	@RequestMapping(value = "/journal", method = RequestMethod.POST)
-	public Result<String> add(@Valid JournalForm journalForm) {
+	public Result<String> add(@Valid @RequestBody JournalForm journalForm) {
 		Result<String> result = journalService.save(journalForm);
 		return result;
 	}
