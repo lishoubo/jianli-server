@@ -1,5 +1,7 @@
 package com.jl.platform.domain;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
@@ -37,6 +39,7 @@ public class BuildingServiceImpl implements BuildingService {
 			}
 		}
 
+		building.setCreateDate(new Date());
 		return buildingMongoDBStore.save(building);
 
 	}
@@ -64,6 +67,7 @@ public class BuildingServiceImpl implements BuildingService {
 	 */
 	@Override
 	public Result update(Building building) {
+		building.setUpdateDate(new Date());
 		return buildingMongoDBStore.update(building);
 	}
 

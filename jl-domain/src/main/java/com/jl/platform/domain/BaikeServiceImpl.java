@@ -1,5 +1,7 @@
 package com.jl.platform.domain;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class BaikeServiceImpl implements BaikeService {
 
 	@Override
 	public Result<String> save(Baike baike) {
+		baike.setCreateDate(new Date());
+		baike.setUpdateDate(new Date());
 		Result<String> result = baikeMongoDBStore.save(baike);
 		if (!result.isSuccess()) {
 			return Result.create(result.getCode(), result.getMessage());
@@ -60,6 +64,7 @@ public class BaikeServiceImpl implements BaikeService {
 	 */
 	@Override
 	public Result update(Baike baike) {
+		baike.setUpdateDate(new Date());
 		return baikeMongoDBStore.update(baike);
 	}
 

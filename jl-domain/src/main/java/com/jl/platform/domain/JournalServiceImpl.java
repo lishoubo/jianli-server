@@ -1,5 +1,7 @@
 package com.jl.platform.domain;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -48,6 +50,8 @@ public class JournalServiceImpl implements JournalService {
 		Journal journal = new Journal();
 		journal.setStaff(staffResult.getData());
 		journal.setBuilding(building);
+		journal.setCreateDate(new Date());
+		journal.setUpdateDate(new Date());
 
 		return journalMongoDBStore.save(journal);
 
