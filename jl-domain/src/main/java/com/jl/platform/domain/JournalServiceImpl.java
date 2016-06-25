@@ -16,6 +16,7 @@ import com.jl.platform.domain.mongodb.JournalMongoDBStore;
 import com.jl.platform.domain.mongodb.StaffMongoDBStore;
 import com.jl.platform.service.JournalService;
 import com.jl.platform.service.form.JournalForm;
+import com.jl.platform.service.form.UpdateJournalForm;
 import com.jl.platform.service.model.Building;
 import com.jl.platform.service.model.Journal;
 import com.jl.platform.service.model.Staff;
@@ -45,11 +46,11 @@ public class JournalServiceImpl implements JournalService {
 			return Result.create(StatusCode.BUILDING_NOT_FOUND);
 		}
 		Building building = buildingResult.getData();
-		building.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
 
 		Journal journal = new Journal();
 		journal.setStaff(staffResult.getData());
 		journal.setBuilding(building);
+		journal.setProcedure(Procedure.valueOf(journalForm.getProcedure()));
 		journal.setCreateDate(String.valueOf(new Date().getTime()));
 		journal.setUpdateDate(String.valueOf(new Date().getTime()));
 
@@ -69,5 +70,42 @@ public class JournalServiceImpl implements JournalService {
 	@Override
 	public Result delete(String id) {
 		return journalMongoDBStore.delete(id);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * com.jl.platform.service.JournalService#update(com.jl.platform.service
+	 * .form.JournalForm)
+	 */
+	@Override
+	public Result update(UpdateJournalForm updateJournalForm) {
+
+		Result<Staff> staffResult = staffMongoDBStore
+				.findByName(updateJournalForm.getStaff());
+		if (staffResult == null || staffResult.getData() == null) {
+			return Result.create(StatusCode.STAFF_NOT_FOUND);
+		}
+		Result<Building> buildingResult = buildingMongoDBStore
+				.findByName(updateJournalForm.getBuilding());
+		if (buildingResult == null || buildingResult.getData() == null) {
+			return Result.create(StatusCode.BUILDING_NOT_FOUND);
+		}
+		Building building = buildingResult.getData();
+
+		Result<Journal> journalResult = journalMongoDBStore
+				.findById(updateJournalForm.getId());
+		if (journalResult == null || journalResult.getData() == null) {
+			return Result.create(StatusCode.JOURNAL_NOT_FOUND);
+		}
+
+		Journal journal = journalResult.getData();
+		journal.setStaff(staffResult.getData());
+		journal.setBuilding(building);
+		journal.setProcedure(Procedure.valueOf(updateJournalForm.getProcedure()));
+		journal.setCreateDate(String.valueOf(new Date().getTime()));
+		journal.setUpdateDate(String.valueOf(new Date().getTime()));
+
+		return journalMongoDBStore.update(journal);
 	}
 }

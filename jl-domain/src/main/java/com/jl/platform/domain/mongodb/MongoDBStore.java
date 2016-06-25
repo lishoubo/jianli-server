@@ -163,6 +163,21 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 		return Result.create(StatusCode.SYSTEM_ERROR);
 	}
 
+	public Result<T> findById(String id) {
+		try {
+			FindIterable<Document> documents = collection.find(Filters.eq(ID,
+					id));
+			if (!documents.iterator().hasNext()) {
+				return Result.create(StatusCode.STAFF_NOT_FOUND);
+			}
+			return Result.create(JSON.parseObject(documents.iterator().next()
+					.toJson(), tClass));
+		} catch (Exception e) {
+			logger.error("[mongodb][find] exception.", e);
+		}
+		return Result.create(StatusCode.SYSTEM_ERROR);
+	}
+
 	public Result<T> delete(String id) {
 		try {
 			DeleteResult deleteResult = collection

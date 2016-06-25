@@ -10,9 +10,11 @@ public enum StatusCode {
 
 	STAFF_NOT_FOUND(404, "NOT FOUND STAFF", "没有找到工程师"),
 
-	BUILDING_NOT_FOUND(404, "NOT FOUND STAFF", "没有找到相应的工程"),
+	BUILDING_NOT_FOUND(404, "NOT FOUND BUILDING", "没有找到相应的工程"),
 
 	SYSTEM_ERROR(500, "SYSTEM ERROR", "服务端出错"),
+
+	JOURNAL_NOT_FOUND(404, "NOT FOUND JOURNAL", "没有找到相应的日记"),
 
 	//
 	;

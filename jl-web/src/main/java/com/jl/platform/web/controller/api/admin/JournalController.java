@@ -13,6 +13,7 @@ import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Result;
 import com.jl.platform.service.JournalService;
 import com.jl.platform.service.form.JournalForm;
+import com.jl.platform.service.form.UpdateJournalForm;
 import com.jl.platform.web.controller.BaseController;
 
 /**
@@ -41,10 +42,8 @@ public class JournalController extends BaseController {
 	}
 
 	@RequestMapping(value = "/journal/update", method = RequestMethod.POST)
-	public Result delete(@Valid @RequestBody JournalForm journalForm) {
-		// return journalService.update(journalForm);
-		// TODO
-		return null;
+	public Result delete(@Valid @RequestBody UpdateJournalForm updateJournalForm) {
+		return journalService.update(updateJournalForm);
 	}
 
 }
