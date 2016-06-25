@@ -36,6 +36,11 @@ public class JournalController extends BaseController {
 		return journalService.pageQery(pageReq);
 	}
 
+	@RequestMapping(value = "/journal/queryById", method = RequestMethod.GET)
+	public Result queryById(@RequestParam("id") String id) {
+		return journalService.queryById(id);
+	}
+
 	@RequestMapping(value = "/journal/delete", method = RequestMethod.POST)
 	public Result delete(@RequestParam("id") String id) {
 		return journalService.delete(id);

@@ -110,4 +110,13 @@ public class JournalServiceImpl implements JournalService {
 
 		return journalMongoDBStore.update(journal);
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.jl.platform.service.JournalService#queryById(java.lang.String)
+	 */
+	@Override
+	public Result queryById(String id) {
+		return journalMongoDBStore.findById(id);
+	}
 }

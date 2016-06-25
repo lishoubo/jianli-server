@@ -24,4 +24,10 @@ public interface JournalService {
 	 * @return Result
 	 */
 	Result update(UpdateJournalForm updateJournalForm);
+
+	/**
+	 * @param id
+	 * @return Result
+	 */
+	Result queryById(String id);
 }
