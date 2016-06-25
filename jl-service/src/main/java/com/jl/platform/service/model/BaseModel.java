@@ -7,6 +7,7 @@ import java.util.Date;
  * Created by lishoubo on 16/6/18.
  */
 public abstract class BaseModel implements Serializable {
+	private static final long serialVersionUID = 1295452213657638490L;
 	private String _id;
 	private String type;
 	protected Date updateDate;
