@@ -21,12 +21,12 @@ public class Address {
 		this.district = district;
 	}
 
-	public String getDetailedAddr() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setDetailedAddr(String detailedAddr) {
-		this.location = detailedAddr;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 }
