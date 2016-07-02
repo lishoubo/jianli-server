@@ -3,14 +3,18 @@
  */
 package com.jl.platform.service.model.common;
 
+import org.hibernate.validator.constraints.SafeHtml;
+
 /**
  * @author zhanglu
  */
 public class Address {
 	/** 行政区 eg.余杭区 */
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	private String district;
 
 	/** 详细地址 */
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	private String location;
 
 	public String getDistrict() {

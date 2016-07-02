@@ -12,9 +12,14 @@ public class Baike extends BaseModel {
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	@NotEmpty(message = "标题不能为空")
 	private String title;
+
 	private Procedure procedure;
+
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC_WITH_IMAGES)
 	@NotEmpty(message = "内容不能为空")
 	private String content;
+
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	@NotEmpty(message = "作者不能为空")
 	private String author;
 

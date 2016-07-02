@@ -1,5 +1,7 @@
 package com.jl.platform.service.model;
 
+import org.hibernate.validator.constraints.SafeHtml;
+
 import com.jl.platform.common.Procedure;
 
 /**
@@ -9,7 +11,11 @@ public class Journal extends BaseModel {
 	private Building building;
 	private Staff staff;
 	private Procedure procedure;
+
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC_WITH_IMAGES)
 	private String content;
+
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC)
 	private String cover;
 
 	public Building getBuilding() {
