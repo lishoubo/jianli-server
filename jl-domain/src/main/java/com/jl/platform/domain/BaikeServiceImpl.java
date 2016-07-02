@@ -75,7 +75,8 @@ public class BaikeServiceImpl implements BaikeService {
 	 * .service.model.BaikeQueryCondition)
 	 */
 	@Override
-	public Result queryByCondition(BaikeQueryCondition condition) {
-		return baikeMongoDBStore.queryByCondition(condition);
+	public Result queryByCondition(BaikeQueryCondition condition,
+			boolean includeContent) {
+		return baikeMongoDBStore.queryByCondition(condition, includeContent);
 	}
 }

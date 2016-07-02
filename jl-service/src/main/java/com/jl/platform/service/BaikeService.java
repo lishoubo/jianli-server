@@ -32,7 +32,10 @@ public interface BaikeService {
 
 	/**
 	 * @param condition
+	 * @param includeContent
+	 *            返回值是否包含百科内容
 	 * @return Result
 	 */
-	Result queryByCondition(BaikeQueryCondition condition);
+	Result queryByCondition(BaikeQueryCondition condition,
+			boolean includeContent);
 }

@@ -8,6 +8,7 @@ import static com.mongodb.client.model.Sorts.ascending;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.slf4j.Logger;
@@ -50,14 +51,20 @@ public class BaikeMongoDBStore extends MongoDBStore<Baike> {
 
 	/**
 	 * @param condition
+	 * @param includeContent
 	 * @return Result
 	 */
 	public Result<Pagination<Baike>> queryByCondition(
-			BaikeQueryCondition condition) {
+			BaikeQueryCondition condition, boolean includeContent) {
 		try {
 			Bson filter = condition.getProcedure() == null ? Filters
 					.exists("procedure") : Filters.eq("procedure",
 					condition.getProcedure());
+
+			if (!includeContent) {
+				BsonDocument bson = BsonDocument.parse("{\"content\":\"0\"}");
+				filter = Filters.and(filter, bson);
+			}
 
 			FindIterable<Document> iterable = collection.find(filter)
 					.sort(ascending(condition.getSortConditions()))

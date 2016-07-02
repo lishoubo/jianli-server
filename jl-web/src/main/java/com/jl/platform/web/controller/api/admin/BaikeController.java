@@ -43,7 +43,7 @@ public class BaikeController extends BaseController {
 
 	@RequestMapping(value = "/baike/queryByCondition", method = RequestMethod.POST)
 	public Result queryByCondition(BaikeQueryCondition condition) {
-		return baikeService.queryByCondition(condition);
+		return baikeService.queryByCondition(condition, false);
 	}
 
 	@RequestMapping(value = "/baike/delete", method = RequestMethod.POST)
