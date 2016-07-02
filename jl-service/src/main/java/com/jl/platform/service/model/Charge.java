@@ -6,7 +6,6 @@ package com.jl.platform.service.model;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 
-import com.jl.platform.common.FitmentType;
 import com.jl.platform.service.model.common.Address;
 
 /**
@@ -18,27 +17,28 @@ public class Charge extends BaseModel {
 	/** 房屋面积 */
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	@NotEmpty(message = "请填写房屋面积")
-	private int acreage;
+	private int area;
 
 	/** 地址 */
 	@NotEmpty(message = "请填写地址")
 	private Address address;
 
-	/** 装修档次 */
-	@NotEmpty(message = "请选择装修档次")
-	private FitmentType fitment;
+	/** 客户姓名 */
+	@NotEmpty(message = "请填写客户姓名")
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
+	private String userName;
 
 	/** 联系方式 */
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	@NotEmpty(message = "请填写联系方式")
 	private String mobile;
 
-	public int getAcreage() {
-		return acreage;
+	public int getArea() {
+		return area;
 	}
 
-	public void setAcreage(int acreage) {
-		this.acreage = acreage;
+	public void setArea(int area) {
+		this.area = area;
 	}
 
 	public Address getAddress() {
@@ -49,12 +49,12 @@ public class Charge extends BaseModel {
 		this.address = address;
 	}
 
-	public FitmentType getFitment() {
-		return fitment;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setFitment(FitmentType fitment) {
-		this.fitment = fitment;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getMobile() {
