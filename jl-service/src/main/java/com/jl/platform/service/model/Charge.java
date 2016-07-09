@@ -15,12 +15,9 @@ public class Charge extends BaseModel {
 	private static final long serialVersionUID = -3150317123797033797L;
 
 	/** 房屋面积 */
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
-	@NotEmpty(message = "请填写房屋面积")
 	private int area;
 
 	/** 地址 */
-	@NotEmpty(message = "请填写地址")
 	private Address address;
 
 	/** 客户姓名 */

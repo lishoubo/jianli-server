@@ -12,7 +12,6 @@ public class Staff extends BaseModel {
 	private String name;
 
 	/** 资历 */
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	private int qualification;
 
 	/** 监理头像URL */
