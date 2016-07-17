@@ -89,8 +89,12 @@
                 <groupId>javax.el</groupId>
                 <artifactId>javax.el-api</artifactId>
                 <version>3.0.0</version>
-
             </dependency>
+			<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -121,6 +125,10 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+		</dependency>
     </dependencies>
 
     <build>
