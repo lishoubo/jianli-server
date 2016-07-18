@@ -37,12 +37,12 @@ public class UpdateJournalForm {
 	private String procedure;
 
 	/** 内容 */
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC_WITH_IMAGES)
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.RELAXED)
 	@NotEmpty(message = "必须录入内容")
 	private String content;
 
 	/** 封面 */
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC)
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	private String cover;
 
 	public String getStaff() {

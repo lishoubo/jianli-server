@@ -56,7 +56,13 @@ public class BuildingServiceImpl implements BuildingService {
 	 */
 	@Override
 	public Result<Building> queryById(String id) {
-		return buildingMongoDBStore.queryById(id);
+		Result<Building> result = buildingMongoDBStore.queryById(id);
+
+		if (result.getCode() == StatusCode.RECORD_NOT_FOUND.getCode()) {
+			return Result.create(StatusCode.BUILDING_NOT_FOUND);
+		}
+
+		return result;
 	}
 
 	/*

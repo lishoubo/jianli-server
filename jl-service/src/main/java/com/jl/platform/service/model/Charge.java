@@ -3,6 +3,8 @@
  */
 package com.jl.platform.service.model;
 
+import javax.validation.Valid;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 
@@ -18,7 +20,8 @@ public class Charge extends BaseModel {
 	private int area;
 
 	/** 地址 */
-	private Address address;
+	private @Valid
+	Address address;
 
 	/** 客户姓名 */
 	@NotEmpty(message = "请填写客户姓名")

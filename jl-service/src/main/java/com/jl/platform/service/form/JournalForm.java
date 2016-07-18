@@ -31,11 +31,11 @@ public class JournalForm {
 	/**
 	 * 内容
 	 */
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC_WITH_IMAGES)
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.RELAXED)
 	@NotEmpty(message = "必须录入内容")
 	private String content;
 
-	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC)
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.SIMPLE_TEXT)
 	private String cover;
 
 	public String getStaff() {

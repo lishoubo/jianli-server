@@ -153,7 +153,7 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 			FindIterable<Document> documents = collection.find(Filters.eq(name,
 					value));
 			if (!documents.iterator().hasNext()) {
-				return Result.create(StatusCode.STAFF_NOT_FOUND);
+				return Result.create(StatusCode.RECORD_NOT_FOUND);
 			}
 			return Result.create(JSON.parseObject(documents.iterator().next()
 					.toJson(), tClass));

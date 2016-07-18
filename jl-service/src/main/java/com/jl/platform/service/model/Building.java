@@ -1,5 +1,7 @@
 package com.jl.platform.service.model;
 
+import javax.validation.Valid;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 
@@ -21,7 +23,8 @@ public class Building extends BaseModel {
 	/** 当前阶段 */
 	private Procedure procedure;
 
-	private Address address;
+	private @Valid
+	Address address;
 
 	public String getName() {
 		return name;
