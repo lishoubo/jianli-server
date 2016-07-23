@@ -17,7 +17,7 @@ public class Charge extends BaseModel {
 	private static final long serialVersionUID = -3150317123797033797L;
 
 	/** 房屋面积 */
-	private int area;
+	private String area;
 
 	/** 地址 */
 	private @Valid
@@ -33,11 +33,11 @@ public class Charge extends BaseModel {
 	@NotEmpty(message = "请填写联系方式")
 	private String mobile;
 
-	public int getArea() {
+	public String getArea() {
 		return area;
 	}
 
-	public void setArea(int area) {
+	public void setArea(String area) {
 		this.area = area;
 	}
 

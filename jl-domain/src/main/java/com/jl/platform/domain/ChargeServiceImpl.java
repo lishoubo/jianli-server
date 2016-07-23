@@ -66,4 +66,13 @@ public class ChargeServiceImpl implements ChargeService {
 		return chargeMongoDBStore.update(charge);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.jl.platform.service.ChargeService#count()
+	 */
+	@Override
+	public Object count() {
+		return chargeMongoDBStore.count();
+	}
+
 }

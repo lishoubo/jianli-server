@@ -38,6 +38,11 @@ public class ChargeController extends BaseController {
 		return chargeService.pageQery(pageQuery);
 	}
 
+	@RequestMapping(value = "/charge/count", method = RequestMethod.GET)
+	public void count() {
+		// return chargeService.count();
+	}
+
 	@RequestMapping(value = "/charge/delete", method = RequestMethod.POST)
 	public Result delete(@RequestParam String id) {
 		return chargeService.delete(id);

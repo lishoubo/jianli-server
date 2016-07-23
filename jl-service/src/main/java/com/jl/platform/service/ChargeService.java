@@ -36,4 +36,9 @@ public interface ChargeService {
 	 */
 	public Result update(Charge charge);
 
+	/**
+	 * @return Object
+	 */
+	public Object count();
+
 }
