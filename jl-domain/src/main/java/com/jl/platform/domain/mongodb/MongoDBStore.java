@@ -67,7 +67,6 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 	private void initCollection() {
 		if (needCreate()) {
 			createCollection();
-			return;
 		}
 		this.collection = this.mongoDB.getMongoDatabase().getCollection(
 				this.type);
