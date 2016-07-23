@@ -39,6 +39,6 @@ public interface ChargeService {
 	/**
 	 * @return Object
 	 */
-	public Object count();
+	public Result count();
 
 }

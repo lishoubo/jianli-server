@@ -53,12 +53,4 @@ public class ChargeMongoDBStore extends MongoDBStore<Charge> {
 		return Result.create(StatusCode.SYSTEM_ERROR);
 	}
 
-	/**
-	 * @return Object
-	 */
-	public Object count() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

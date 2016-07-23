@@ -71,7 +71,7 @@ public class ChargeServiceImpl implements ChargeService {
 	 * @see com.jl.platform.service.ChargeService#count()
 	 */
 	@Override
-	public Object count() {
+	public Result count() {
 		return chargeMongoDBStore.count();
 	}
 

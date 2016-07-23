@@ -202,6 +202,10 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 		return Result.create(StatusCode.SUCCESS);
 	}
 
+	public Result count() {
+		return Result.create(collection.count());
+	}
+
 	public int tablePage(int pageSize) {
 		return (int) ((collection.count() + pageSize - 1) / pageSize);
 	}

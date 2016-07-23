@@ -39,8 +39,8 @@ public class ChargeController extends BaseController {
 	}
 
 	@RequestMapping(value = "/charge/count", method = RequestMethod.GET)
-	public void count() {
-		// return chargeService.count();
+	public Result count() {
+		return chargeService.count();
 	}
 
 	@RequestMapping(value = "/charge/delete", method = RequestMethod.POST)
