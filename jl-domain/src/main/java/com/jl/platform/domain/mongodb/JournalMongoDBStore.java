@@ -22,7 +22,7 @@ public class JournalMongoDBStore extends MongoDBStore<Journal> {
 	 * @return Result<Pagination<Journal>>
 	 */
 	public Result<Pagination<Journal>> pageQery(PageQuery pageQuery) {
-		return pageQuery0(pageQuery);
+		return pageQuery1(pageQuery);
 	}
 
 	/**

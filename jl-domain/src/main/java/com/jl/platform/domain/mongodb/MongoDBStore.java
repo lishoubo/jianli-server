@@ -30,6 +30,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 
@@ -132,6 +133,26 @@ public abstract class MongoDBStore<T extends BaseModel> implements
 			FindIterable<Document> iterable = collection.find()
 					.sort(ascending("_id")).skip(pageQuery.getOffset())
 					.limit(pageQuery.getPageSize());
+			final List<T> list = new ArrayList<T>(pageQuery.getPageSize());
+			iterable.forEach(new Block<Document>() {
+				@Override
+				public void apply(Document document) {
+					list.add(JSON.parseObject(document.toJson(), tClass));
+				}
+			});
+			return Result.pagination(list, pageQuery,
+					tablePage(pageQuery.getPageSize()));
+		} catch (Exception e) {
+			logger.error("[mongodb][query] exception.", e);
+		}
+		return Result.create(StatusCode.SYSTEM_ERROR);
+	}
+
+	protected Result<Pagination<T>> pageQuery1(PageQuery pageQuery) {
+		try {
+			FindIterable<Document> iterable = collection.find()
+					.sort(Sorts.descending(pageQuery.getSortFiled()))
+					.skip(pageQuery.getOffset()).limit(pageQuery.getPageSize());
 			final List<T> list = new ArrayList<T>(pageQuery.getPageSize());
 			iterable.forEach(new Block<Document>() {
 				@Override
