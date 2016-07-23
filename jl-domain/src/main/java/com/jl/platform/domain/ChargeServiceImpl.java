@@ -3,6 +3,8 @@
  */
 package com.jl.platform.domain;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -28,6 +30,8 @@ public class ChargeServiceImpl implements ChargeService {
 	 */
 	@Override
 	public Result save(Charge charge) {
+		charge.setCreateDate(new Date());
+		charge.setUpdateDate(new Date());
 		return chargeMongoDBStore.save(charge);
 	}
 
