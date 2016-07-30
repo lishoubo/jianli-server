@@ -14,11 +14,11 @@
         </encoder>
     </appender>
 
-    <appender name="wire" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${log.root}/wire.log</file>
+    <appender name="statistic" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/statistic/statistic.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.root}/wire.log.%d{yyyy-MM-dd}</fileNamePattern>
-            <maxHistory>7</maxHistory>
+            <fileNamePattern>${log.root}/statistic/statistic.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
@@ -39,8 +39,8 @@
     <logger name="access" level="INFO" additivity="false">
         <appender-ref ref="access"/>
     </logger>
-    <logger name="wire" additivity="false">
-        <appender-ref ref="wire"/>
+    <logger name="statistic" additivity="false">
+        <appender-ref ref="statistic"/>
     </logger>
 
     <root level="${log.level}">
