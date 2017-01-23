@@ -23,7 +23,7 @@ public class JournalQueryController extends BaseController {
 
 	@RequestMapping(value = "/journal", method = RequestMethod.GET)
 	public Result list(PageQuery pageReq) {
-		return journalService.pageQery(pageReq);
+		return journalService.pageQuery(pageReq);
 	}
 
 	@RequestMapping(value = "/journal/queryById", method = RequestMethod.GET)

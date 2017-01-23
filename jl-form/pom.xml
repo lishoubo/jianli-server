@@ -8,37 +8,22 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>jl-service</artifactId>
-    <name>jl-service</name>
+    <artifactId>jl-form</artifactId>
+    <name>jl-form</name>
 
     <dependencies>
         <dependency>
             <groupId>com.jianli.platform</groupId>
-            <artifactId>jl-common</artifactId>
+            <artifactId>jl-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.jianli.platform</groupId>
-            <artifactId>jl-form</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.jianli.platform</groupId>
-            <artifactId>jl-dao</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
         </dependency>
-
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator-annotation-processor</artifactId>
-        </dependency>
-
     </dependencies>
-
 </project>

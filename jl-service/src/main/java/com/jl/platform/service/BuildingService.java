@@ -3,30 +3,18 @@ package com.jl.platform.service;
 import com.jl.platform.common.PageQuery;
 import com.jl.platform.common.Pagination;
 import com.jl.platform.common.Result;
-import com.jl.platform.service.model.Building;
+import com.jl.platform.dao.model.Building;
+import com.jl.platform.form.BuildingForm;
 
 public interface BuildingService {
 
-	Result<String> save(Building building);
+    Result<String> save(BuildingForm buildingForm);
 
-	Result<Pagination<Building>> pageQuery(PageQuery pageQuery);
+    Result<Pagination<Building>> pageQuery(PageQuery pageQuery);
 
-	/**
-	 * @param id
-	 * @return Result<Building>
-	 */
-	Result<Building> queryById(String id);
+    Result<Building> queryById(String id);
 
-	/**
-	 * @param building
-	 * @return Result<String>
-	 */
-	Result update(Building building);
+    Result update(BuildingForm buildingForm);
 
-	/**
-	 * @param id
-	 * @param rev
-	 * @return Result<String>
-	 */
-	Result delete(String id);
+    Result delete(String id);
 }
